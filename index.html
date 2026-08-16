@@ -544,6 +544,48 @@ footer{
     width:170px;
     height:170px;
   }
+}/* ===== FOUNDER CARD ===== */
+.founder-card{
+  margin:30px auto 10px;
+  padding:22px 28px;
+  max-width:520px;
+  text-align:center;
+  border:1px solid rgba(255,120,170,.35);
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(255,60,120,.12),rgba(255,0,70,.08));
+  box-shadow:0 15px 45px rgba(255,0,80,.18);
+  backdrop-filter:blur(10px);
+  animation:founderGlow 3s ease-in-out infinite;
+}
+
+.founder-icon{
+  font-size:38px;
+  margin-bottom:8px;
+}
+
+.founder-label{
+  font-size:12px;
+  letter-spacing:2px;
+  color:#ff9fbd;
+  font-weight:700;
+}
+
+.founder-name{
+  margin-top:8px;
+  font-size:28px;
+  font-weight:800;
+  color:#ff6f9f;
+}
+
+.founder-text{
+  margin-top:7px;
+  color:#ffd6e3;
+  font-size:14px;
+}
+
+@keyframes founderGlow{
+  0%,100%{transform:translateY(0);box-shadow:0 15px 45px rgba(255,0,80,.18)}
+  50%{transform:translateY(-5px);box-shadow:0 20px 60px rgba(255,40,110,.30)}
 }
 </style>
 </head>
@@ -904,11 +946,29 @@ footer{
 
 <footer>
 
-  Made with ❤️ and a little bit of magic ✨
+    <div class="footer-magic">
+        Made with 💗 and a little bit of magic ✨
+    </div>
 
-  <br><br>
+    <div class="founder-card">
+        <div class="founder-icon">👑</div>
 
-  © 2026 My Magical Gift
+        <div class="founder-label">FOUNDER & CREATOR</div>
+
+        <div class="founder-name">Amit Das</div>
+
+        <div class="founder-text">
+            The person behind My Magical Gift 💖
+        </div>
+    </div>
+
+    <div class="footer-line"></div>
+
+    <div class="footer-copy">
+        © 2026 My Magical Gift
+        <br>
+        Crafted with love, memories & a little magic ✨
+    </div>
 
 </footer>
 
