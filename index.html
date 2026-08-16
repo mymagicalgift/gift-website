@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Magical Gift ✨</title>
+  <meta name="description" content="Create beautiful personalized digital gifts with photos, music, wishes and magical animations.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fff0f6, #f3e8ff, #e0f2fe);
+      color: #242033;
+      min-height: 100vh;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: .45;
+    }
+
+    .hero::before {
+      background: #ff8fc7;
+      top: -100px;
+      left: -100px;
+    }
+
+    .hero::after {
+      background: #9f8cff;
+      bottom: -100px;
+      right: -100px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .logo {
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 78px);
+      background: linear-gradient(90deg, #ff4f9a, #8b5cf6);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 18px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #625b73;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .start-btn {
+      margin-top: 35px;
+      border: none;
+      padding: 17px 35px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(90deg, #ff4f9a, #8b5cf6);
+      box-shadow: 0 12px 35px rgba(139, 92, 246, .3);
+      transition: .25s;
+    }
+
+    .start-btn:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .feature {
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(10px);
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-size: 14px;
+    }
+
+    .creator {
+      display: none;
+      min-height: 100vh;
+      padding: 50px 20px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      text-align: center;
+      color: #6b6478;
+      margin-bottom: 35px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 25px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 15px 50px rgba(70, 45, 100, .1);
+    }
+
+    .card h2 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd4e8;
+      border-radius: 14px;
+      font-size: 16px;
+      outline: none;
+      background: white;
+      margin-bottom: 18px;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #a855f7;
+    }
+
+    .photo-preview {
+      width: 100%;
+      max-height: 350px;
+      object-fit: contain;
+      border-radius: 18px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .music-box {
+      padding: 18px;
+      background: #faf7ff;
+      border-radius: 15px;
+      margin-top: 5px;
+    }
+
+    .next-btn,
+    .preview-btn {
+      width: 100%;
+      border: none;
+      padding: 16px;
+      border-radius: 15px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      background: linear-gradient(90deg, #ff4f9a, #8b5cf6);
+      color: white;
+      margin-top: 8px;
+    }
+
+    .preview-btn {
+      background: #242033;
+    }
+
+    .gift {
+      display: none;
+      min-height: 100vh;
+      padding: 30px 20px 80px;
+      background: radial-gradient(circle at top, #fff1f8, #f0e9ff 50%, #dff4ff);
+    }
+
+    .gift-box {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .gift-title {
+      font-size: clamp(35px, 7vw, 65px);
+      margin: 30px 0 15px;
+      background: linear-gradient(90deg, #ff4f9a, #8b5cf6);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .gift-message {
+      font-size: 20px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      margin: 25px auto;
+      max-width: 650px;
+    }
+
+    .gift-photo {
+      max-width: 100%;
+      max-height: 450px;
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.15);
+      display: none;
+      margin: 20px auto;
+    }
+
+    .cake {
+      font-size: 100px;
+      margin: 25px 0;
+      transition: .5s;
+    }
+
+    .candle {
+      font-size: 70px;
+      cursor: pointer;
+      transition: .4s;
+    }
+
+    .candle.off {
+      opacity: .5;
+      transform: scale(.9);
+      filter: grayscale(1);
+    }
+
+    .wish-text {
+      font-size: 18px;
+      color: #6b6478;
+      margin-bottom: 15px;
+    }
+
+    .share-area {
+      margin-top: 40px;
+      padding: 25px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.7);
+    }
+
+    .share-btn {
+      border: none;
+      background: #25d366;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .restart-btn {
+      border: none;
+      background: #242033;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+    }
+
+    .payment-box {
+      display: none;
+      margin-top: 20px;
+      padding: 25px;
+      border-radius: 20px;
+      background: #fff8fd;
+      border: 1px solid #f0d9e8;
+    }
+
+    .price {
+      font-size: 35px;
+      font-weight: bold;
+      color: #8b5cf6;
+      margin: 10px 0;
+    }
+
+    .small {
+      color: #777;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 20px;
+      }
+
+      .subtitle {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HOME -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+      <div class="logo">🎁✨</div>
+
+      <h1>My Magical Gift</h1>
+
+      <p class="subtitle">
+        Create a beautiful personalized digital gift with photos,
+        wishes, music, memories and magical moments.
+      </p>
+
+      <button class="start-btn" onclick="startCreating()">
+        Create Your Gift ✨
+      </button>
+
+      <div class="features">
+        <div class="feature">📸 Photos</div>
+        <div class="feature">💌 Personal Message</div>
+        <div class="feature">🎵 Music</div>
+        <div class="feature">🎂 Birthday</div>
+        <div class="feature">✨ Animations</div>
+        <div class="feature">🔗 Shareable Link</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CREATOR -->
+  <section class="creator" id="creator">
+
+    <div class="container">
+
+      <h1 class="title">Create Your Magical Gift 🎁</h1>
+
+      <p class="description">
+        Fill in the details below and create something special.
+      </p>
+
+
+      <div class="card">
+
+        <h2>💖 1. Gift Details</h2>
+
+        <label>Who is this gift for?</label>
+
+        <input
+          id="receiver"
+          type="text"
+          placeholder="Example: Best Friend"
+        >
+
+        <label>Your message</label>
+
+        <textarea
+          id="message"
+          placeholder="Write your beautiful message here..."
+        ></textarea>
+
+      </div>
+
+
+      <div class="card">
+
+        <h2>📸 2. Add a Memory</h2>
+
+        <label>Select a photo</label>
+
+        <input
+          id="photo"
+          type="file"
+          accept="image/*"
+        >
+
+        <img
+          id="photoPreview"
+          class="photo-preview"
+          alt="Photo preview"
+        >
+
+      </div>
+
+
+      <div class="card">
+
+        <h2>🎵 3. Add Music</h2>
+
+        <div class="music-box">
+
+          <p style="margin-bottom:12px;">
+            Choose a music file from your device.
+          </p>
+
+          <input
+            id="music"
+            type="file"
+            accept="audio/*"
+          >
+
+          <audio
+            id="musicPreview"
+            controls
+            style="width:100%;display:none;"
+          ></audio>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <h2>🎂 4. Birthday Cake & Wish</h2>
+
+        <p style="margin-bottom:15px;">
+          Your recipient can make a wish and blow out the candle.
+        </p>
+
+        <div style="text-align:center;font-size:65px;">
+          🎂
+        </div>
+
+        <button
+          class="preview-btn"
+          onclick="previewGift()"
+        >
+          Preview My Gift ✨
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GIFT -->
+  <section class="gift" id="gift">
+
+    <div class="gift-box">
+
+      <div style="font-size:50px;">🎁</div>
+
+      <h1 class="gift-title" id="giftTitle">
+        A Magical Gift For You
+      </h1>
+
+      <img
+        id="giftPhoto"
+        class="gift-photo"
+        alt="Gift photo"
+      >
+
+      <div class="cake">🎂</div>
+
+      <p class="wish-text">
+        Make a wish and blow out the candle! 🕯️
+      </p>
+
+      <div
+        id="candle"
+        class="candle"
+        onclick="blowCandle()"
+      >
+        🕯️
+      </div>
+
+      <p
+        id="wishStatus"
+        style="margin-top:10px;font-weight:bold;"
+      >
+        Click the candle to make your wish ✨
+      </p>
+
+      <div
+        id="giftMessage"
+        class="gift-message"
+      ></div>
+
+      <audio
+        id="giftMusic"
+        controls
+        loop
+        style="display:none;width:100%;max-width:500px;margin:25px auto;"
+      ></audio>
+
+
+      <div class="share-area">
+
+        <h2>💝 Your Gift Is Ready!</h2>
+
+        <p style="margin:12px 0;color:#666;">
+          Everything is ready. You can now share your magical gift.
+        </p>
+
+        <button
+          class="share-btn"
+          onclick="showPayment()"
+        >
+          🔗 Share Gift
+        </button>
+
+        <button
+          class="restart-btn"
+          onclick="restart()"
+        >
+          ↩ Create Another
+        </button>
+
+
+        <div
+          id="paymentBox"
+          class="payment-box"
+        >
+
+          <h2>✨ Almost Ready!</h2>
+
+          <p>
+            Complete your gift and get your shareable link.
+          </p>
+
+          <div class="price">
+            ₹49
+          </div>
+
+          <p class="small">
+            Payment system will be connected securely in the next step.
+          </p>
+
+          <br>
+
+          <button
+            class="start-btn"
+            style="margin-top:0;"
+            onclick="demoPayment()"
+          >
+            Continue to Payment 💳
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <footer>
+      Made with ❤️ using My Magical Gift
+    </footer>
+
+  </section>
+
+
+<script>
+
+  let photoData = "";
+  let musicData = "";
+
+
+  function startCreating() {
+
+    document.getElementById("home").style.display = "none";
+
+    document.getElementById("creator").style.display = "block";
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+
+  document
+    .getElementById("photo")
+    .addEventListener("change", function(event) {
+
+      const file = event.target.files[0];
+
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+
+        photoData = e.target.result;
+
+        const preview =
+          document.getElementById("photoPreview");
+
+        preview.src = photoData;
+
+        preview.style.display = "block";
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+
+  document
+    .getElementById("music")
+    .addEventListener("change", function(event) {
+
+      const file = event.target.files[0];
+
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+
+        musicData = e.target.result;
+
+        const preview =
+          document.getElementById("musicPreview");
+
+        preview.src = musicData;
+
+        preview.style.display = "block";
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+
+  function previewGift() {
+
+    const receiver =
+      document.getElementById("receiver").value.trim();
+
+    const message =
+      document.getElementById("message").value.trim();
+
+
+    if (!receiver) {
+
+      alert("Please enter the recipient's name 😊");
+
+      return;
+    }
+
+
+    if (!message) {
+
+      alert("Please write a message 💌");
+
+      return;
+    }
+
+
+    document.getElementById("creator").style.display = "none";
+
+    document.getElementById("gift").style.display = "block";
+
+
+    document.getElementById("giftTitle").innerText =
+      "A Magical Gift For " + receiver + " ✨";
+
+
+    document.getElementById("giftMessage").innerText =
+      message;
+
+
+    if (photoData) {
+
+      const image =
+        document.getElementById("giftPhoto");
+
+      image.src = photoData;
+
+      image.style.display = "block";
+    }
+
+
+    if (musicData) {
+
+      const music =
+        document.getElementById("giftMusic");
+
+      music.src = musicData;
+
+      music.style.display = "block";
+    }
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+
+  function blowCandle() {
+
+    const candle =
+      document.getElementById("candle");
+
+    const status =
+      document.getElementById("wishStatus");
+
+    if (candle.classList.contains("off")) {
+
+      return;
+    }
+
+
+    candle.classList.add("off");
+
+    candle.innerText = "💨";
+
+    status.innerText =
+      "✨ Wish made! May your wish come true! ✨";
+
+
+    const music =
+      document.getElementById("giftMusic");
+
+    if (music.src) {
+
+      music.play().catch(() => {});
+
+    }
+
+
+    createConfetti();
+  }
+
+
+  function createConfetti() {
+
+    for (let i = 0; i < 40; i++) {
+
+      const piece =
+        document.createElement("div");
+
+      piece.innerText = "✨";
+
+      piece.style.position = "fixed";
+      piece.style.left = Math.random() * 100 + "vw";
+      piece.style.top = "-20px";
+      piece.style.fontSize =
+        (12 + Math.random() * 20) + "px";
+      piece.style.zIndex = "9999";
+      piece.style.pointerEvents = "none";
+
+      document.body.appendChild(piece);
+
+
+      const animation =
+        piece.animate(
+          [
+            {
+              transform: "translateY(0) rotate(0deg)",
+              opacity: 1
+            },
+            {
+              transform:
+                "translateY(100vh) rotate(720deg)",
+              opacity: 0
+            }
+          ],
+          {
+            duration:
+              1800 + Math.random() * 1500,
+            easing: "ease-out"
+          }
+        );
+
+
+      animation.onfinish = () => piece.remove();
+
+    }
+  }
+
+
+  function showPayment() {
+
+    document.getElementById("paymentBox").style.display =
+      "block";
+
+    document
+      .getElementById("paymentBox")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+  }
+
+
+  function demoPayment() {
+
+    alert(
+      "Payment system will be connected securely in the next development step."
+    );
+
+  }
+
+
+  function restart() {
+
+    location.reload();
+
+  }
+
+</script>
+
+</body>
+</html>
