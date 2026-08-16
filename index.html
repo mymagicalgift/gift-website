@@ -559,8 +559,20 @@ footer{
 }
 
 .founder-icon{
-  font-size:38px;
-  margin-bottom:8px;
+    font-size:46px;
+    margin-bottom:10px;
+    display:inline-block;
+    animation:ribbonFloat 2s ease-in-out infinite;
+    filter:drop-shadow(0 0 8px rgba(255,100,160,.7));
+}
+
+@keyframes ribbonFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-5deg) scale(1);
+    }
+    50%{
+        transform:translateY(-8px) rotate(5deg) scale(1.12);
+    }
 }
 
 .founder-label{
@@ -571,10 +583,32 @@ footer{
 }
 
 .founder-name{
-  margin-top:8px;
-  font-size:28px;
-  font-weight:800;
-  color:#ff6f9f;
+    margin-top:8px;
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:1px;
+    color:#ff6f9f;
+    text-shadow:
+        0 0 8px rgba(255,105,160,.55),
+        0 0 18px rgba(255,60,130,.35);
+    display:inline-block;
+    animation:founderNameGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes founderNameGlow{
+    0%,100%{
+        transform:scale(1);
+        text-shadow:
+            0 0 8px rgba(255,105,160,.55),
+            0 0 18px rgba(255,60,130,.35);
+    }
+    50%{
+        transform:scale(1.04);
+        text-shadow:
+            0 0 12px rgba(255,120,180,.8),
+            0 0 28px rgba(255,60,130,.55);
+    }
 }
 
 .founder-text{
@@ -951,7 +985,7 @@ footer{
     </div>
 
     <div class="founder-card">
-        <div class="founder-icon">💗</div>
+        <div class="founder-icon">🎀</div>
 
         <div class="founder-label">FOUNDER & CREATOR</div>
 
