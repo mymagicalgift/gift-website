@@ -621,6 +621,162 @@ footer{
   0%,100%{transform:translateY(0);box-shadow:0 15px 45px rgba(255,0,80,.18)}
   50%{transform:translateY(-5px);box-shadow:0 20px 60px rgba(255,40,110,.30)}
 }
+/* ===== MADE FOR EVERY OCCASION ===== */
+
+.occasion-section{
+  padding:90px 20px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.section-badge{
+  display:inline-block;
+  padding:10px 20px;
+  border:1px solid rgba(255,120,170,.35);
+  border-radius:50px;
+  background:rgba(255,70,130,.10);
+  color:#ffd6e5;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1px;
+  box-shadow:0 0 25px rgba(255,50,120,.15);
+  animation:badgeGlow 2.5s ease-in-out infinite;
+}
+
+.occasion-section h2{
+  margin:20px 0 12px;
+  font-size:42px;
+  font-weight:900;
+  color:#fff;
+}
+
+.occasion-section h2 span{
+  color:#ff6fa3;
+  text-shadow:
+    0 0 10px rgba(255,90,150,.6),
+    0 0 30px rgba(255,60,130,.35);
+}
+
+.section-subtitle{
+  max-width:650px;
+  margin:0 auto 45px;
+  color:#ffd6e3;
+  font-size:17px;
+  line-height:1.7;
+}
+
+.occasion-grid{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+
+.occasion-card{
+  padding:30px 22px;
+  border:1px solid rgba(255,120,170,.28);
+  border-radius:24px;
+  background:linear-gradient(
+    145deg,
+    rgba(255,70,130,.13),
+    rgba(120,0,40,.22)
+  );
+  box-shadow:0 12px 40px rgba(0,0,0,.18);
+  backdrop-filter:blur(10px);
+  transition:transform .35s ease, box-shadow .35s ease;
+  animation:occasionFloat 4s ease-in-out infinite;
+}
+
+.occasion-card:nth-child(2){
+  animation-delay:.3s;
+}
+
+.occasion-card:nth-child(3){
+  animation-delay:.6s;
+}
+
+.occasion-card:nth-child(4){
+  animation-delay:.9s;
+}
+
+.occasion-card:hover{
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:
+    0 20px 55px rgba(255,30,110,.25),
+    0 0 30px rgba(255,80,150,.18);
+}
+
+.occasion-icon{
+  font-size:48px;
+  margin-bottom:15px;
+  display:inline-block;
+  animation:iconBounce 2.5s ease-in-out infinite;
+}
+
+.occasion-card h3{
+  color:#ff9fc2;
+  font-size:21px;
+  margin-bottom:10px;
+}
+
+.occasion-card p{
+  color:#ffdbe7;
+  line-height:1.6;
+  font-size:14px;
+}
+
+@keyframes occasionFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-6px);
+  }
+}
+
+@keyframes iconBounce{
+  0%,100%{
+    transform:translateY(0) rotate(0deg);
+  }
+  50%{
+    transform:translateY(-7px) rotate(4deg) scale(1.08);
+  }
+}
+
+@keyframes badgeGlow{
+  0%,100%{
+    box-shadow:0 0 15px rgba(255,60,130,.15);
+  }
+  50%{
+    box-shadow:0 0 30px rgba(255,60,130,.35);
+  }
+}
+
+@media(max-width:850px){
+  .occasion-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .occasion-section h2{
+    font-size:34px;
+  }
+}
+
+@media(max-width:550px){
+  .occasion-grid{
+    grid-template-columns:1fr;
+  }
+
+  .occasion-section{
+    padding:65px 16px;
+  }
+
+  .occasion-section h2{
+    font-size:30px;
+  }
+}
 </style>
 </head>
 
@@ -975,7 +1131,47 @@ footer{
 
 </section>
 
+<!-- MADE FOR EVERY OCCASION -->
+<section class="occasion-section">
 
+  <div class="section-badge">💕 FOR EVERY SPECIAL MOMENT</div>
+
+  <h2>Made for <span>Every Occasion</span> ✨</h2>
+
+  <p class="section-subtitle">
+    Every beautiful moment deserves a little magic.
+    Create something unforgettable for someone special. 💗
+  </p>
+
+  <div class="occasion-grid">
+
+    <div class="occasion-card">
+      <div class="occasion-icon">🎂</div>
+      <h3>Birthday</h3>
+      <p>Make their birthday magical with wishes, memories and surprises.</p>
+    </div>
+
+    <div class="occasion-card">
+      <div class="occasion-icon">💕</div>
+      <h3>Anniversary</h3>
+      <p>Celebrate your beautiful journey together with something special.</p>
+    </div>
+
+    <div class="occasion-card">
+      <div class="occasion-icon">🤝</div>
+      <h3>Friendship</h3>
+      <p>Give your best friend a little digital surprise filled with love.</p>
+    </div>
+
+    <div class="occasion-card">
+      <div class="occasion-icon">💌</div>
+      <h3>Just Because</h3>
+      <p>Sometimes you don't need a reason to make someone's day brighter.</p>
+    </div>
+
+  </div>
+
+</section>
 <!-- FOOTER -->
 
 <footer>
