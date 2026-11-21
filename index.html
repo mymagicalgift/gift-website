@@ -697,6 +697,32 @@ footer {
     <div class="card"><div class="emoji">🎉</div><h3>Celebration</h3><p>A cheerful mood for a happy occasion.</p><button class="primary-btn" onclick="selectMusic('Celebration')">Choose Music</button></div>
     <div class="card"><div class="emoji">🌌</div><h3>Dreamy Ambient</h3><p>A calm dreamy background mood.</p><button class="primary-btn" onclick="selectMusic('Dreamy Ambient')">Choose Music</button></div>
   </div>
+  
+<!-- CUSTOM MUSIC UPLOAD -->
+<div class="card" style="max-width:600px;margin:35px auto;text-align:center;">
+  <div class="emoji">🎧</div>
+  <h3>Upload Your Own Music</h3>
+  <p>Choose your favourite song from your device.</p>
+
+  <input
+    type="file"
+    id="custom-music"
+    accept="audio/mp3,audio/wav,audio/mpeg,audio/mp4,audio/x-m4a"
+    onchange="previewCustomMusic(event)"
+    style="margin-top:20px;max-width:100%;"
+  >
+
+  <p id="custom-music-name" style="margin-top:18px;color:#ff91b9;">
+    No music uploaded yet.
+  </p>
+
+  <audio
+    id="custom-music-player"
+    controls
+    style="display:none;width:100%;margin-top:15px;"
+  ></audio>
+</div>
+
   <p id="selected-music" style="text-align:center;color:#ff91b9;margin-top:30px;">No music selected yet.</p>
 </section>
 
@@ -759,6 +785,33 @@ function selectWrap(wrapName) {
 function selectTheme(themeName) {
   document.getElementById("selected-theme").textContent =
     "Your selected theme: " + themeName + " 🎨";
+}
+
+let customMusicURL = null;
+
+function previewCustomMusic(event) {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  if (!file.type.startsWith("audio/")) {
+    alert("Please choose a valid audio file.");
+    event.target.value = "";
+    return;
+  }
+
+  if (customMusicURL) {
+    URL.revokeObjectURL(customMusicURL);
+  }
+
+  customMusicURL = URL.createObjectURL(file);
+
+  const player = document.getElementById("custom-music-player");
+  const name = document.getElementById("custom-music-name");
+
+  player.src = customMusicURL;
+  player.style.display = "block";
+  name.textContent = "Selected music: " + file.name + " 🎵";
 }
 
 function selectMusic(musicName) {
