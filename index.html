@@ -545,6 +545,70 @@ footer {
     <button class="primary-btn" onclick="startJourney()">Let's Create Magic ♡</button>
   </div>
 </div>
+
+<section class="cake-studio" id="cake-studio">
+  <div class="section-heading">
+    <small>A LITTLE SWEETNESS</small>
+    <h2>Choose Your Dream Cake 🎂</h2>
+    <p>Pick a beautiful cake for your special celebration.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="emoji">🎂</div>
+      <h3>Classic Birthday</h3>
+      <p>A timeless cake for a magical birthday.</p>
+      <button class="primary-btn" onclick="selectCake('Classic Birthday')">Choose Cake</button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🍓</div>
+      <h3>Strawberry Love</h3>
+      <p>A sweet strawberry-inspired celebration.</p>
+      <button class="primary-btn" onclick="selectCake('Strawberry Love')">Choose Cake</button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🍫</div>
+      <h3>Chocolate Dream</h3>
+      <p>A rich chocolate-themed cake design.</p>
+      <button class="primary-btn" onclick="selectCake('Chocolate Dream')">Choose Cake</button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🌸</div>
+      <h3>Pink Blossom</h3>
+      <p>A lovely pink cake for sweet moments.</p>
+      <button class="primary-btn" onclick="selectCake('Pink Blossom')">Choose Cake</button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">💜</div>
+      <h3>Lavender Dream</h3>
+      <p>A dreamy cake with a soft purple theme.</p>
+      <button class="primary-btn" onclick="selectCake('Lavender Dream')">Choose Cake</button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">👑</div>
+      <h3>Royal Celebration</h3>
+      <p>A royal-inspired cake for a grand moment.</p>
+      <button class="primary-btn" onclick="selectCake('Royal Celebration')">Choose Cake</button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">❤️</div>
+      <h3>Heart Cake</h3>
+      <p>A heart-themed cake for a special person.</p>
+      <button class="primary-btn" onclick="selectCake('Heart Cake')">Choose Cake</button>
+    </div>
+  </div>
+
+  <p id="selected-cake" style="text-align:center;color:#ff91b9;margin-top:30px;">
+    No cake selected yet.
+  </p>
+</section>
+
 </main>
   
 <footer class="site-footer">
@@ -585,6 +649,18 @@ footer {
 function startJourney() {
   alert("Your magical gift journey is coming soon! ✨");
 }
+  
+function selectCake(cakeName) {
+  const selectedCake = document.getElementById("selected-cake");
+
+  selectedCake.textContent = "Your selected cake: " + cakeName + " 🎂";
+
+  selectedCake.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
 </script>
 </body>
 </html>
