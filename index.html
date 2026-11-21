@@ -329,6 +329,104 @@ footer {
   .hero {min-height:590px;}
   .step {padding:20px 5px;}
 }
+  
+/* ===== PREMIUM FOOTER DESIGN ===== */
+
+.site-footer {
+  text-align: center;
+  padding: 45px 20px 30px;
+  margin-top: 45px;
+  background: linear-gradient(135deg, #250719, #4b102e, #210817);
+  border-top: 1px solid rgba(255, 130, 190, 0.3);
+  color: #ffe0ed;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-magic {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #ffd0e5;
+  margin-bottom: 22px;
+  animation: footerGlow 3s ease-in-out infinite;
+}
+
+.footer-founder {
+  margin: 15px auto;
+}
+
+.footer-ribbon {
+  display: inline-block;
+  font-size: 40px;
+  animation: ribbonFloat 2s ease-in-out infinite;
+}
+
+.footer-founder-label {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #ff9bc8;
+  margin-top: 8px;
+}
+
+.footer-name {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  display: inline-block;
+  background: linear-gradient(90deg, #ffb2d5, #ff5eaa, #ffd3e8);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: nameShine 3s linear infinite;
+}
+
+.footer-tagline {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 13px;
+  color: #f5c4d9;
+  margin-top: 12px;
+}
+
+.footer-line {
+  width: 100px;
+  height: 2px;
+  margin: 24px auto;
+  background: linear-gradient(90deg, transparent, #ff70b5, transparent);
+}
+
+.footer-copy {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 12px;
+  line-height: 2;
+  color: #d9aabd;
+}
+
+@keyframes ribbonFloat {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-9px) rotate(5deg); }
+}
+
+@keyframes nameShine {
+  to { background-position: 200% center; }
+}
+
+@keyframes footerGlow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .footer-name { font-size: 30px; }
+  .footer-magic { font-size: 14px; }
+  .site-footer { padding: 35px 15px 25px; }
+}
+
 </style>
 </head>
 
@@ -450,10 +548,41 @@ footer {
 </main>
 
 <footer>
-  Made with 💗 and a little bit of magic ✨
-  <p>Founder & Creator</p>
-  <div class="founder">🎀 Amit Das</div>
-  <p>© 2026 My Magical Gift. All rights reserved.</p>
+  
+<footer class="site-footer">
+
+  <div class="footer-magic">
+    Made with 💗 and a little bit of magic ✨
+  </div>
+
+  <div class="footer-founder">
+
+    <div class="footer-ribbon">🎀</div>
+
+    <div class="footer-founder-label">
+      FOUNDER & CREATOR
+    </div>
+
+    <div class="footer-name">
+      Amit Das
+    </div>
+
+    <div class="footer-tagline">
+      Creating magical memories, one wish at a time 💖
+    </div>
+
+  </div>
+
+  <div class="footer-line"></div>
+
+  <div class="footer-copy">
+    © 2026 My Magical Gift. All rights reserved.
+    <br>
+    Crafted with love & memories ✨
+  </div>
+
+</footer>
+
 </footer>
 
 <script>
