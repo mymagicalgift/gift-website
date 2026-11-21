@@ -1,1576 +1,465 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>My Magical Gift ❤️</title>
-
-<meta name="description"
-content="Create beautiful personalized digital gifts with photos, wishes, music and magical animations.">
+<title>My Magical Gift | Create Something Beautiful</title>
+<meta name="description" content="Create beautiful personalized digital gifts filled with love and memories.">
 
 <style>
-*{
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap');
+
+:root {
+  --pink:#ff5c99;
+  --rose:#ff8bb5;
+  --dark:#160817;
+  --light:#fff2f7;
+  --gold:#ffd89a;
+}
+
+* {
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html { scroll-behavior:smooth; }
 
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
-  color:#fff;
+body {
+  font-family:'DM Sans',sans-serif;
+  background:var(--dark);
+  color:white;
   overflow-x:hidden;
-  background:
-    radial-gradient(circle at 15% 15%,rgba(255,70,130,.28),transparent 30%),
-    radial-gradient(circle at 85% 10%,rgba(255,0,70,.22),transparent 28%),
-    linear-gradient(135deg,#160006,#450014,#190008);
 }
 
-/* ================= FLOATING HEARTS ================= */
+button { font-family:inherit; cursor:pointer; }
 
-.hearts{
+.background-glow {
   position:fixed;
   inset:0;
-  overflow:hidden;
-  pointer-events:none;
-  z-index:0;
+  z-index:-2;
+  background:
+    radial-gradient(ellipse at 15% 15%,#781d503d,transparent 45%),
+    radial-gradient(ellipse at 85% 55%,#a02b6933,transparent 45%),
+    linear-gradient(145deg,#160817,#270c25,#100914);
 }
 
-.heart{
-  position:absolute;
-  bottom:-60px;
-  font-size:25px;
-  opacity:.65;
-  animation:floatHeart 9s linear infinite;
-}
-
-.heart:nth-child(1){left:5%;animation-duration:8s}
-.heart:nth-child(2){left:17%;animation-duration:11s;animation-delay:2s}
-.heart:nth-child(3){left:30%;animation-duration:9s;animation-delay:1s}
-.heart:nth-child(4){left:45%;animation-duration:12s;animation-delay:3s}
-.heart:nth-child(5){left:60%;animation-duration:10s}
-.heart:nth-child(6){left:76%;animation-duration:8s;animation-delay:2s}
-.heart:nth-child(7){left:90%;animation-duration:13s;animation-delay:4s}
-
-@keyframes floatHeart{
-  0%{
-    transform:translateY(0) rotate(0);
-    opacity:0;
-  }
-  15%{
-    opacity:.75;
-  }
-  100%{
-    transform:translateY(-110vh) rotate(360deg);
-    opacity:0;
-  }
-}
-
-/* ================= NAVBAR ================= */
-
-nav{
-  position:relative;
-  z-index:5;
+nav {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 7%;
-  background:rgba(20,0,8,.55);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,120,160,.18);
+  padding:22px 8%;
+  border-bottom:1px solid #ffffff12;
 }
 
-.logo{
-  font-size:23px;
-  font-weight:bold;
-  color:#ff9fba;
+.logo {
+  font-family:'Playfair Display',serif;
+  font-size:25px;
+  color:#ff91b9;
+  font-weight:800;
 }
 
-.nav-btn{
-  border:1px solid rgba(255,150,180,.3);
-  background:rgba(255,70,120,.13);
-  color:white;
-  border-radius:30px;
-  padding:10px 18px;
-  cursor:pointer;
+nav a {
+  color:#f8dce9;
+  text-decoration:none;
+  margin-left:25px;
+  font-size:13px;
 }
 
-/* ================= COMMON ================= */
-
-.container{
-  width:min(1000px,92%);
-  margin:auto;
-}
-
-.page{
-  position:relative;
-  z-index:2;
-  min-height:calc(100vh - 70px);
-  padding:60px 0;
-}
-
-.hidden{
-  display:none !important;
-}
-
-.glass{
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,140,175,.2);
-  backdrop-filter:blur(15px);
-  box-shadow:0 20px 60px rgba(0,0,0,.25);
-}
-
-/* ================= HOME ================= */
-
-.hero{
-  min-height:75vh;
+.hero {
+  min-height:660px;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
+  padding:90px 20px;
+  position:relative;
 }
 
-.hero-content{
+.hero-content {
   max-width:850px;
-  animation:fadeUp 1s ease;
+  animation:fadeUp 1s ease both;
 }
 
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.badge{
+.tag {
   display:inline-block;
-  padding:8px 16px;
-  border-radius:30px;
-  color:#ffb1c8;
-  background:rgba(255,70,120,.12);
-  border:1px solid rgba(255,130,165,.2);
-  margin-bottom:20px;
+  padding:10px 18px;
+  border:1px solid #ff8bb555;
+  border-radius:40px;
+  color:#ffb4cf;
+  background:#ff5c9910;
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:28px;
 }
 
-h1{
-  font-size:clamp(45px,8vw,85px);
-  line-height:1;
+h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(43px,7vw,78px);
+  line-height:1.12;
   margin-bottom:25px;
-  background:linear-gradient(
-    90deg,
-    #fff,
-    #ff9dbb,
-    #ff376f,
-    #fff
-  );
-  background-size:300%;
-  -webkit-background-clip:text;
-  color:transparent;
-  animation:shine 5s linear infinite;
 }
 
-@keyframes shine{
-  0%{background-position:0}
-  100%{background-position:300%}
+h1 span {
+  color:#ff82ad;
+  text-shadow:0 0 35px #ff5c9955;
 }
 
-.hero p{
-  max-width:650px;
+.hero p {
+  max-width:570px;
   margin:auto;
-  color:#ffd7e3;
-  font-size:19px;
-  line-height:1.7;
-}
-
-.primary{
-  margin-top:32px;
-  padding:16px 30px;
-  border:none;
-  border-radius:50px;
-  background:linear-gradient(135deg,#ff174f,#ff6f9d);
-  color:white;
-  font-size:17px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 10px 35px rgba(255,30,90,.4);
-  transition:.3s;
-}
-
-.primary:hover{
-  transform:translateY(-4px) scale(1.04);
-  box-shadow:0 15px 45px rgba(255,30,90,.6);
-}
-
-.secondary{
-  margin-top:15px;
-  padding:13px 24px;
-  border-radius:30px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,150,180,.25);
-  color:white;
-  cursor:pointer;
-}
-
-/* ================= FEATURES ================= */
-
-.features{
-  padding:70px 0;
-}
-
-.section-title{
-  text-align:center;
-  font-size:38px;
-  margin-bottom:40px;
-}
-
-.section-title span{
-  color:#ff709d;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:20px;
-}
-
-.card{
-  padding:28px 20px;
-  border-radius:25px;
-  text-align:center;
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-  background:rgba(255,70,120,.12);
-}
-
-.icon{
-  font-size:43px;
-  margin-bottom:15px;
-}
-
-.card h3{
-  color:#ffabc3;
-  margin-bottom:10px;
-}
-
-.card p{
-  color:#e8c4d0;
-  line-height:1.6;
-}
-
-/* ================= CREATOR ================= */
-
-.creator{
-  max-width:750px;
-  margin:auto;
-  padding:35px;
-  border-radius:30px;
-}
-
-.creator h2{
-  text-align:center;
-  font-size:35px;
-  margin-bottom:10px;
-}
-
-.creator-sub{
-  text-align:center;
-  color:#e7c2cf;
-  margin-bottom:30px;
-}
-
-.form-group{
-  margin-bottom:20px;
-}
-
-label{
-  display:block;
-  margin-bottom:8px;
-  color:#ffb0c7;
-  font-weight:bold;
-}
-
-input,
-textarea,
-select{
-  width:100%;
-  padding:15px;
-  border-radius:15px;
-  border:1px solid rgba(255,130,165,.25);
-  background:rgba(0,0,0,.25);
-  color:white;
-  outline:none;
+  color:#d9bdce;
+  line-height:1.9;
   font-size:16px;
 }
 
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:#ff6490;
-  box-shadow:0 0 15px rgba(255,50,110,.2);
-}
-
-textarea{
-  min-height:130px;
-  resize:vertical;
-}
-
-select option{
-  background:#35000f;
-}
-
-.photo-box{
-  border:2px dashed rgba(255,130,165,.3);
-  padding:25px;
-  border-radius:20px;
-  text-align:center;
-  cursor:pointer;
-}
-
-.photo-box:hover{
-  border-color:#ff6f9d;
-}
-
-#photoPreview{
-  display:none;
-  width:170px;
-  height:170px;
-  object-fit:cover;
-  border-radius:20px;
-  margin:20px auto 0;
-  border:3px solid #ff719c;
-  box-shadow:0 10px 30px rgba(255,30,90,.35);
-}
-
-/* ================= GIFT ================= */
-
-.gift-card{
-  max-width:750px;
-  margin:auto;
-  padding:45px 30px;
-  border-radius:35px;
-  text-align:center;
-  animation:giftAppear 1s ease;
-}
-
-@keyframes giftAppear{
-  from{
-    opacity:0;
-    transform:scale(.85);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-}
-
-.gift-photo{
-  width:210px;
-  height:210px;
-  object-fit:cover;
-  border-radius:50%;
-  border:5px solid #ff709d;
-  box-shadow:
-    0 0 30px rgba(255,50,110,.5),
-    0 0 80px rgba(255,50,110,.15);
-  margin-bottom:25px;
-}
-
-.gift-title{
-  font-size:45px;
-  margin-bottom:15px;
-  color:#ffabc3;
-}
-
-.gift-message{
-  color:#ffdce6;
-  font-size:19px;
-  line-height:1.8;
-  white-space:pre-wrap;
-}
-
-/* ================= CANDLE ================= */
-
-.candle-area{
-  margin:35px auto;
-  cursor:pointer;
-}
-
-.candle{
-  position:relative;
-  width:65px;
-  height:130px;
-  margin:auto;
-  border-radius:10px;
-  background:linear-gradient(
-    90deg,
-    #ff719d,
-    #fff,
-    #ff719d
-  );
-  box-shadow:0 10px 30px rgba(255,70,120,.3);
-}
-
-.flame{
-  position:absolute;
-  width:30px;
-  height:45px;
-  background:linear-gradient(#fff,#ffcc55,#ff305d);
-  border-radius:50% 50% 50% 50%;
-  top:-45px;
-  left:18px;
-  transform:rotate(5deg);
-  animation:flicker .5s infinite alternate;
-}
-
-@keyframes flicker{
-  from{
-    transform:rotate(-5deg) scale(1);
-  }
-  to{
-    transform:rotate(5deg) scale(1.12);
-  }
-}
-
-.flame.off{
-  display:none;
-}
-
-.wish-text{
-  color:#ffb3c9;
-  font-size:18px;
-}
-
-/* ================= CONFETTI ================= */
-
-.confetti{
-  position:fixed;
-  width:9px;
-  height:18px;
-  top:-20px;
-  z-index:100;
-  animation:confettiFall 3s linear forwards;
-}
-
-@keyframes confettiFall{
-  to{
-    transform:translateY(110vh) rotate(720deg);
-    opacity:0;
-  }
-}
-
-/* ================= RATING ================= */
-
-.rating-box{
-  max-width:650px;
-  margin:30px auto;
-  padding:35px;
-  border-radius:25px;
-  text-align:center;
-}
-
-.star-btn{
-  border:none;
-  background:none;
-  color:#555;
-  font-size:38px;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.star-btn:hover,
-.star-btn.active{
-  color:#ff719d;
-  transform:scale(1.15);
-}
-
-.rating-result{
-  margin-top:15px;
-  color:#ffd4e0;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  padding:40px 20px;
-  color:#cda5b3;
-  border-top:1px solid rgba(255,255,255,.08);
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:600px){
-
-  nav{
-    padding:16px 5%;
-  }
-
-  .logo{
-    font-size:18px;
-  }
-
-  .hero{
-    min-height:70vh;
-    padding:30px 0;
-  }
-
-  .hero p{
-    font-size:17px;
-  }
-
-  .creator{
-    padding:25px 18px;
-  }
-
-  .gift-title{
-    font-size:34px;
-  }
-
-  .gift-photo{
-    width:170px;
-    height:170px;
-  }
-}/* ===== FOUNDER CARD ===== */
-.founder-card{
-  margin:30px auto 10px;
-  padding:22px 28px;
-  max-width:520px;
-  text-align:center;
-  border:1px solid rgba(255,120,170,.35);
-  border-radius:24px;
-  background:linear-gradient(135deg,rgba(255,60,120,.12),rgba(255,0,70,.08));
-  box-shadow:0 15px 45px rgba(255,0,80,.18);
-  backdrop-filter:blur(10px);
-  animation:founderGlow 3s ease-in-out infinite;
-}
-
-.founder-icon{
-    font-size:46px;
-    margin-bottom:10px;
-    display:inline-block;
-    animation:ribbonFloat 2s ease-in-out infinite;
-    filter:drop-shadow(0 0 8px rgba(255,100,160,.7));
-}
-
-@keyframes ribbonFloat{
-    0%,100%{
-        transform:translateY(0) rotate(-5deg) scale(1);
-    }
-    50%{
-        transform:translateY(-8px) rotate(5deg) scale(1.12);
-    }
-}
-
-.founder-label{
-  font-size:12px;
-  letter-spacing:2px;
-  color:#ff9fbd;
-  font-weight:700;
-}
-
-.founder-name{
-    margin-top:8px;
-    font-family:Georgia, "Times New Roman", serif;
-    font-size:32px;
-    font-weight:900;
-    letter-spacing:1px;
-    color:#ff6f9f;
-    text-shadow:
-        0 0 8px rgba(255,105,160,.55),
-        0 0 18px rgba(255,60,130,.35);
-    display:inline-block;
-    animation:founderNameGlow 2.5s ease-in-out infinite;
-}
-
-@keyframes founderNameGlow{
-    0%,100%{
-        transform:scale(1);
-        text-shadow:
-            0 0 8px rgba(255,105,160,.55),
-            0 0 18px rgba(255,60,130,.35);
-    }
-    50%{
-        transform:scale(1.04);
-        text-shadow:
-            0 0 12px rgba(255,120,180,.8),
-            0 0 28px rgba(255,60,130,.55);
-    }
-}
-
-.founder-text{
-  margin-top:7px;
-  color:#ffd6e3;
-  font-size:14px;
-}
-
-@keyframes founderGlow{
-  0%,100%{transform:translateY(0);box-shadow:0 15px 45px rgba(255,0,80,.18)}
-  50%{transform:translateY(-5px);box-shadow:0 20px 60px rgba(255,40,110,.30)}
-}
-/* ===== MADE FOR EVERY OCCASION ===== */
-
-.occasion-section{
-  padding:90px 20px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-
-.section-badge{
+.primary-btn {
   display:inline-block;
-  padding:10px 20px;
-  border:1px solid rgba(255,120,170,.35);
-  border-radius:50px;
-  background:rgba(255,70,130,.10);
-  color:#ffd6e5;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:1px;
-  box-shadow:0 0 25px rgba(255,50,120,.15);
-  animation:badgeGlow 2.5s ease-in-out infinite;
-}
-
-.occasion-section h2{
-  margin:20px 0 12px;
-  font-size:42px;
-  font-weight:900;
+  margin-top:35px;
+  padding:17px 35px;
+  border:0;
+  border-radius:40px;
   color:#fff;
+  font-size:15px;
+  font-weight:700;
+  background:linear-gradient(100deg,#ff4f91,#d93683);
+  box-shadow:0 10px 35px #ff3c873e;
+  transition:.3s;
 }
 
-.occasion-section h2 span{
-  color:#ff6fa3;
-  text-shadow:
-    0 0 10px rgba(255,90,150,.6),
-    0 0 30px rgba(255,60,130,.35);
+.primary-btn:hover {
+  transform:translateY(-5px);
+  box-shadow:0 15px 40px #ff3c8770;
 }
 
-.section-subtitle{
+.floating-heart {
+  position:absolute;
+  color:#ff7eaa;
+  opacity:.45;
+  animation:float 5s ease-in-out infinite;
+  pointer-events:none;
+}
+
+.heart-one {top:20%;left:12%;font-size:28px;}
+.heart-two {top:35%;right:13%;font-size:22px;animation-delay:1s;}
+.heart-three {bottom:15%;left:20%;font-size:20px;animation-delay:2s;}
+
+section {
+  padding:85px 8%;
+}
+
+.section-heading {
+  text-align:center;
   max-width:650px;
-  margin:0 auto 45px;
-  color:#ffd6e3;
-  font-size:17px;
+  margin:0 auto 48px;
+}
+
+.section-heading small {
+  color:#ff8bb5;
+  letter-spacing:3px;
+  font-weight:700;
+}
+
+.section-heading h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(30px,5vw,46px);
+  margin:15px 0;
+}
+
+.section-heading p {
+  color:#cbb4c5;
+  line-height:1.8;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:22px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.card {
+  padding:30px 23px;
+  border:1px solid #ff8bb52b;
+  border-radius:22px;
+  background:linear-gradient(145deg,#ffffff0b,#ff5c9909);
+  transition:.4s;
+}
+
+.card:hover {
+  transform:translateY(-9px);
+  border-color:#ff82ad;
+  box-shadow:0 15px 45px #ff5c9920;
+}
+
+.card .emoji {
+  font-size:35px;
+  margin-bottom:18px;
+}
+
+.card h3 {
+  font-family:'Playfair Display',serif;
+  font-size:21px;
+  margin-bottom:12px;
+}
+
+.card p {
+  font-size:13px;
+  color:#cbb4c5;
+  line-height:1.8;
+}
+
+.journey {
+  background:#ffffff05;
+}
+
+.steps {
+  max-width:800px;
+  margin:auto;
+}
+
+.step {
+  display:flex;
+  gap:22px;
+  padding:25px;
+  border-bottom:1px solid #ffffff14;
+  align-items:center;
+}
+
+.step-number {
+  min-width:45px;
+  height:45px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#ff5c9920;
+  color:#ff91b9;
+  font-weight:800;
+}
+
+.step p {
+  color:#cbb4c5;
+  margin-top:7px;
+  font-size:13px;
   line-height:1.7;
 }
 
-.occasion-grid{
-  max-width:1050px;
+.plan {
+  max-width:500px;
   margin:auto;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:22px;
+  text-align:center;
+  padding:40px;
+  border:1px solid #ff8bb566;
+  border-radius:28px;
+  background:linear-gradient(145deg,#ff5c9915,#ffffff08);
 }
 
-.occasion-card{
-  padding:30px 22px;
-  border:1px solid rgba(255,120,170,.28);
-  border-radius:24px;
-  background:linear-gradient(
-    145deg,
-    rgba(255,70,130,.13),
-    rgba(120,0,40,.22)
-  );
-  box-shadow:0 12px 40px rgba(0,0,0,.18);
-  backdrop-filter:blur(10px);
-  transition:transform .35s ease, box-shadow .35s ease;
-  animation:occasionFloat 4s ease-in-out infinite;
+.plan h3 {
+  font-family:'Playfair Display',serif;
+  font-size:28px;
 }
 
-.occasion-card:nth-child(2){
-  animation-delay:.3s;
+.price {
+  font-size:38px;
+  color:#ff91b9;
+  font-weight:800;
+  margin:20px;
 }
 
-.occasion-card:nth-child(3){
-  animation-delay:.6s;
+.faq {
+  max-width:750px;
+  margin:auto;
 }
 
-.occasion-card:nth-child(4){
-  animation-delay:.9s;
+details {
+  border-bottom:1px solid #ffffff20;
+  padding:20px 5px;
 }
 
-.occasion-card:hover{
-  transform:translateY(-12px) scale(1.03);
-  box-shadow:
-    0 20px 55px rgba(255,30,110,.25),
-    0 0 30px rgba(255,80,150,.18);
+summary {
+  cursor:pointer;
+  font-weight:700;
 }
 
-.occasion-icon{
-  font-size:48px;
-  margin-bottom:15px;
-  display:inline-block;
-  animation:iconBounce 2.5s ease-in-out infinite;
+details p {
+  color:#cbb4c5;
+  line-height:1.8;
+  padding-top:15px;
 }
 
-.occasion-card h3{
-  color:#ff9fc2;
+.final-cta {
+  text-align:center;
+  padding:100px 20px;
+  background:radial-gradient(ellipse,#9c285333,transparent 70%);
+}
+
+footer {
+  text-align:center;
+  padding:35px 15px;
+  border-top:1px solid #ffffff15;
+  color:#cbb4c5;
+  font-size:13px;
+  line-height:2;
+}
+
+.founder {
+  color:#ff91b9;
+  font-family:'Playfair Display',serif;
   font-size:21px;
-  margin-bottom:10px;
+  font-weight:800;
 }
 
-.occasion-card p{
-  color:#ffdbe7;
-  line-height:1.6;
-  font-size:14px;
+@keyframes fadeUp {
+  from {opacity:0;transform:translateY(35px);}
+  to {opacity:1;transform:translateY(0);}
 }
 
-@keyframes occasionFloat{
-  0%,100%{
-    transform:translateY(0);
-  }
-  50%{
-    transform:translateY(-6px);
-  }
+@keyframes float {
+  0%,100% {transform:translateY(0) rotate(-8deg);}
+  50% {transform:translateY(-25px) rotate(10deg);}
 }
 
-@keyframes iconBounce{
-  0%,100%{
-    transform:translateY(0) rotate(0deg);
-  }
-  50%{
-    transform:translateY(-7px) rotate(4deg) scale(1.08);
-  }
-}
-
-@keyframes badgeGlow{
-  0%,100%{
-    box-shadow:0 0 15px rgba(255,60,130,.15);
-  }
-  50%{
-    box-shadow:0 0 30px rgba(255,60,130,.35);
-  }
-}
-
-@media(max-width:850px){
-  .occasion-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .occasion-section h2{
-    font-size:34px;
-  }
-}
-
-@media(max-width:550px){
-  .occasion-grid{
-    grid-template-columns:1fr;
-  }
-
-  .occasion-section{
-    padding:65px 16px;
-  }
-
-  .occasion-section h2{
-    font-size:30px;
-  }
+@media(max-width:650px) {
+  nav {padding:18px 5%;}
+  nav a {margin-left:9px;font-size:11px;}
+  .logo {font-size:19px;}
+  section {padding:65px 6%;}
+  .hero {min-height:590px;}
+  .step {padding:20px 5px;}
 }
 </style>
 </head>
 
 <body>
-
-<!-- FLOATING HEARTS -->
-
-<div class="hearts">
-  <div class="heart">❤</div>
-  <div class="heart">💗</div>
-  <div class="heart">💕</div>
-  <div class="heart">💖</div>
-  <div class="heart">❤</div>
-  <div class="heart">💗</div>
-  <div class="heart">💞</div>
-</div>
-
-<!-- NAVIGATION -->
+<div class="background-glow"></div>
 
 <nav>
-  <div class="logo">💝 My Magical Gift</div>
-
-  <button class="nav-btn" onclick="showCreator()">
-    ✨ Create Gift
-  </button>
+  <div class="logo">My Magical Gift ♡</div>
+  <div>
+    <a href="#occasions">Occasions</a>
+    <a href="#journey">Journey</a>
+    <a href="#faq">FAQs</a>
+  </div>
 </nav>
 
+<main>
+<div class="hero">
+  <span class="floating-heart heart-one">♡</span>
+  <span class="floating-heart heart-two">♥</span>
+  <span class="floating-heart heart-three">♡</span>
 
-<!-- ================= HOME ================= -->
+  <div class="hero-content">
+    <div class="tag">A LITTLE MAGIC, MADE WITH LOVE</div>
+    <h1>Turn Your Feelings Into <span>Something Magical.</span></h1>
+    <p>
+      Create a beautiful digital gift filled with memories,
+      heartfelt wishes, music and little surprises.
+      Make someone's special day unforgettable.
+    </p>
+    <button class="primary-btn" onclick="startJourney()">
+      Create Your Magical Gift ✨
+    </button>
+  </div>
+</div>
 
-<section id="homePage" class="page">
-
-  <div class="hero">
-
-    <div class="hero-content">
-
-      <div class="badge">
-        ✨ A little magic for someone special
-      </div>
-
-      <h1>Make Their Day Magical ❤️</h1>
-
-      <p>
-        Create a beautiful personalized digital gift
-        filled with memories, wishes, surprises and love.
-      </p>
-
-      <button class="primary" onclick="showCreator()">
-        🎁 Create Your Magical Gift
-      </button>
-
-    </div>
-
+<section id="occasions">
+  <div class="section-heading">
+    <small>MADE FOR EVERY MOMENT</small>
+    <h2>Made for Every <span style="color:#ff82ad">Occasion</span> ♡</h2>
+    <p>Every beautiful moment deserves a gift that feels personal.</p>
   </div>
 
-
-  <div class="features container">
-
-    <h2 class="section-title">
-      Make It <span>Special</span> 💕
-    </h2>
-
-    <div class="cards">
-
-      <div class="card glass">
-        <div class="icon">📸</div>
-        <h3>Beautiful Memories</h3>
-        <p>
-          Add a special photo and turn it into a magical memory.
-        </p>
-      </div>
-
-      <div class="card glass">
-        <div class="icon">💌</div>
-        <h3>Personal Message</h3>
-        <p>
-          Write a beautiful message that comes straight from your heart.
-        </p>
-      </div>
-
-      <div class="card glass">
-        <div class="icon">🕯️</div>
-        <h3>Make A Wish</h3>
-        <p>
-          Blow the magical candle and make a special wish.
-        </p>
-      </div>
-
-      <div class="card glass">
-        <div class="icon">🎉</div>
-        <h3>Magical Surprise</h3>
-        <p>
-          Finish with a beautiful animated surprise.
-        </p>
-      </div>
-
-    </div>
-
+  <div class="grid">
+    <div class="card"><div class="emoji">🎂</div><h3>Birthday</h3><p>Celebrate their special day with a magical surprise.</p></div>
+    <div class="card"><div class="emoji">💗</div><h3>Romantic</h3><p>Turn your feelings into a beautiful experience.</p></div>
+    <div class="card"><div class="emoji">🧸</div><h3>Friendship</h3><p>Make your favourite memories unforgettable.</p></div>
+    <div class="card"><div class="emoji">💍</div><h3>Anniversary</h3><p>Celebrate the moments that mean everything.</p></div>
+    <div class="card"><div class="emoji">🌸</div><h3>Just Because</h3><p>Surprise someone without needing a reason.</p></div>
   </div>
-
 </section>
 
-
-<!-- ================= CREATOR ================= -->
-
-<section id="creatorPage" class="page hidden">
-
-  <div class="container">
-
-    <div class="creator glass">
-
-      <h2>🎁 Create Your Gift</h2>
-
-      <p class="creator-sub">
-        Fill these details to create something magical ❤️
-      </p>
-
-      <div class="form-group">
-
-        <label>
-          💖 Who is this gift for?
-        </label>
-
-        <input
-          id="recipientName"
-          type="text"
-          placeholder="Enter their name"
-        >
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          🎉 Choose the occasion
-        </label>
-
-        <select id="occasion">
-
-          <option value="Birthday">🎂 Birthday</option>
-
-          <option value="Anniversary">💍 Anniversary</option>
-
-          <option value="Love">❤️ Just Because</option>
-
-          <option value="Friendship">🤝 Friendship</option>
-
-          <option value="Special Day">✨ Special Day</option>
-
-        </select>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          💌 Your special message
-        </label>
-
-        <textarea
-          id="message"
-          placeholder="Write something beautiful..."
-        ></textarea>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          📸 Add a special photo
-        </label>
-
-        <div class="photo-box">
-
-          <input
-            id="photoInput"
-            type="file"
-            accept="image/*"
-          >
-
-          <p style="margin-top:10px;color:#e7c3cf;">
-            Choose a photo from your device
-          </p>
-
-          <img id="photoPreview">
-
-        </div>
-
-      </div>
-
-
-      <button
-        class="primary"
-        style="width:100%;"
-        onclick="createGift()"
-      >
-        ✨ Create Magical Gift
-      </button>
-
-
-      <button
-        class="secondary"
-        style="width:100%;"
-        onclick="goHome()"
-      >
-        ← Back
-      </button>
-
-    </div>
-
+<section class="journey" id="journey">
+  <div class="section-heading">
+    <small>YOUR OWN LITTLE WORLD</small>
+    <h2>Everything Inside the <span style="color:#ff82ad">Journey</span></h2>
+    <p>Build a gift that tells your own story.</p>
   </div>
 
-</section>
-
-
-<!-- ================= GIFT PAGE ================= -->
-
-<section id="giftPage" class="page hidden">
-
-  <div class="container">
-
-    <div class="gift-card glass">
-
-      <img
-        id="giftPhoto"
-        class="gift-photo hidden"
-        alt="Gift photo"
-      >
-
-      <div style="font-size:18px;color:#ff9fbb;">
-        ✨ A Magical Gift For
-      </div>
-
-      <div id="giftName" class="gift-title">
-        Someone Special
-      </div>
-
-      <div
-        id="giftOccasion"
-        style="color:#ffb4c9;font-size:18px;margin-bottom:25px;"
-      ></div>
-
-      <div id="giftMessage" class="gift-message"></div>
-
-
-      <div class="candle-area" onclick="blowCandle()">
-
-        <div class="candle">
-
-          <div id="flame" class="flame"></div>
-
-        </div>
-
-      </div>
-
-      <div id="wishText" class="wish-text">
-        🕯️ Tap the candle to make a wish
-      </div>
-
-
-      <button
-        id="surpriseBtn"
-        class="primary hidden"
-        onclick="showSurprise()"
-      >
-        🎉 Open Your Surprise
-      </button>
-
-
-      <div
-        id="surpriseMessage"
-        class="hidden"
-        style="margin-top:30px;"
-      >
-
-        <div style="font-size:55px;">
-          💖
-        </div>
-
-        <h2 style="color:#ff9fbd;margin:15px 0;">
-          You Are Special! ✨
-        </h2>
-
-        <p style="color:#ffd8e3;line-height:1.7;">
-          May your day be filled with happiness,
-          beautiful memories and lots of love. ❤️
-        </p>
-
-        <button
-          class="primary"
-          onclick="shareGift()"
-        >
-          🔗 Share This Gift
-        </button>
-
-      </div>
-
-    </div>
-
+  <div class="grid">
+    <div class="card"><div class="emoji">🎨</div><h3>Beautiful Themes</h3><p>Explore a collection of unique glowing themes.</p></div>
+    <div class="card"><div class="emoji">🎁</div><h3>Gift Wrapping</h3><p>Choose your favourite gift presentation.</p></div>
+    <div class="card"><div class="emoji">🎂</div><h3>Special Cakes</h3><p>Add a beautiful cake to your celebration.</p></div>
+    <div class="card"><div class="emoji">🎵</div><h3>Your Music</h3><p>Add a song that makes the moment special.</p></div>
+    <div class="card"><div class="emoji">📸</div><h3>Photo Memories</h3><p>Collect your favourite pictures and captions.</p></div>
+    <div class="card"><div class="emoji">💌</div><h3>Personal Wishes</h3><p>Write letters and heartfelt messages.</p></div>
+    <div class="card"><div class="emoji">🧩</div><h3>Little Games</h3><p>Add fun interactive surprises.</p></div>
+    <div class="card"><div class="emoji">✨</div><h3>Final Surprise</h3><p>Finish with a memorable reveal.</p></div>
   </div>
-
 </section>
 
-
-<!-- ================= RATING ================= -->
-
-<section id="ratingPage" class="page hidden">
-
-  <div class="container">
-
-    <div class="rating-box glass">
-
-      <h2>
-        ⭐ Rate Your Experience
-      </h2>
-
-      <p style="color:#e8c5d1;margin:15px 0;">
-        How magical was your experience?
-      </p>
-
-      <div id="stars">
-
-        <button class="star-btn" onclick="rate(1)">★</button>
-
-        <button class="star-btn" onclick="rate(2)">★</button>
-
-        <button class="star-btn" onclick="rate(3)">★</button>
-
-        <button class="star-btn" onclick="rate(4)">★</button>
-
-        <button class="star-btn" onclick="rate(5)">★</button>
-
-      </div>
-
-      <div id="ratingResult" class="rating-result">
-        Choose a rating ❤️
-      </div>
-
-      <button
-        class="primary"
-        onclick="goHome()"
-      >
-        🏠 Back To Home
-      </button>
-
-    </div>
-
+<section>
+  <div class="section-heading">
+    <small>SIMPLE AND BEAUTIFUL</small>
+    <h2>How It Works</h2>
+    <p>Creating something magical should feel easy.</p>
   </div>
-
-</section>
-
-<!-- MADE FOR EVERY OCCASION -->
-<section class="occasion-section">
-
-  <div class="section-badge">💕 FOR EVERY SPECIAL MOMENT</div>
-
-  <h2>Made for <span>Every Occasion</span> ✨</h2>
-
-  <p class="section-subtitle">
-    Every beautiful moment deserves a little magic.
-    Create something unforgettable for someone special. 💗
-  </p>
-
-  <div class="occasion-grid">
-
-    <div class="occasion-card">
-      <div class="occasion-icon">🎂</div>
-      <h3>Birthday</h3>
-      <p>Make their birthday magical with wishes, memories and surprises.</p>
-    </div>
-
-    <div class="occasion-card">
-      <div class="occasion-icon">💕</div>
-      <h3>Anniversary</h3>
-      <p>Celebrate your beautiful journey together with something special.</p>
-    </div>
-
-    <div class="occasion-card">
-      <div class="occasion-icon">🤝</div>
-      <h3>Friendship</h3>
-      <p>Give your best friend a little digital surprise filled with love.</p>
-    </div>
-
-    <div class="occasion-card">
-      <div class="occasion-icon">💌</div>
-      <h3>Just Because</h3>
-      <p>Sometimes you don't need a reason to make someone's day brighter.</p>
-    </div>
-
+  <div class="steps">
+    <div class="step"><div class="step-number">01</div><div><h3>Choose Your Style</h3><p>Pick the occasion and your favourite theme.</p></div></div>
+    <div class="step"><div class="step-number">02</div><div><h3>Make It Personal</h3><p>Add your photos, music, wishes and surprises.</p></div></div>
+    <div class="step"><div class="step-number">03</div><div><h3>Preview Your Gift</h3><p>See your creation before publishing.</p></div></div>
+    <div class="step"><div class="step-number">04</div><div><h3>Share the Magic</h3><p>Publish your gift and share its private link.</p></div></div>
   </div>
-
 </section>
-<!-- FOOTER -->
+
+<section>
+  <div class="section-heading">
+    <small>ONE SIMPLE PLAN</small>
+    <h2>Loved by Thoughtful Gifters</h2>
+    <p>A simple and transparent way to create something meaningful.</p>
+  </div>
+  <div class="plan">
+    <h3>One Magical Gift</h3>
+    <div class="price">₹49</div>
+    <p>One-time publishing price for other users. Owner access and any free redemption options will be configured separately.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-heading">
+    <small>NEED TO KNOW?</small>
+    <h2>Frequently Asked Questions</h2>
+  </div>
+  <div class="faq">
+    <details><summary>Can I personalise my gift?</summary><p>Yes! The planned gift builder will let you add your own photos, music, messages and more.</p></details>
+    <details><summary>Can I share my gift?</summary><p>Yes. The finished experience is designed to be shared through a private link.</p></details>
+    <details><summary>Can I preview my gift?</summary><p>Yes. A preview step will be included before publishing.</p></details>
+    <details><summary>Can I create different types of gifts?</summary><p>Yes. Birthday, friendship, romantic, anniversary and other occasions are planned.</p></details>
+  </div>
+</section>
+
+<div class="final-cta">
+  <div class="section-heading">
+    <small>YOUR MAGIC STARTS HERE</small>
+    <h2>Ready to Make Their Day Unforgettable?</h2>
+    <p>Every little detail can become a beautiful memory.</p>
+    <button class="primary-btn" onclick="startJourney()">Let's Create Magic ♡</button>
+  </div>
+</div>
+</main>
 
 <footer>
-
-    <div class="footer-magic">
-        Made with 💗 and a little bit of magic ✨
-    </div>
-
-    <div class="founder-card">
-        <div class="founder-icon">🎀</div>
-
-        <div class="founder-label">FOUNDER & CREATOR</div>
-
-        <div class="founder-name">Amit Das</div>
-
-        <div class="founder-text">
-            The person behind My Magical Gift 💖
-        </div>
-    </div>
-
-    <div class="footer-line"></div>
-
-    <div class="footer-copy">
-        © 2026 My Magical Gift
-        <br>
-        Crafted with love, memories & a little magic ✨
-    </div>
-
+  Made with 💗 and a little bit of magic ✨
+  <p>Founder & Creator</p>
+  <div class="founder">🎀 Amit Das</div>
+  <p>© 2026 My Magical Gift. All rights reserved.</p>
 </footer>
 
-
 <script>
-
-/* ================= PAGE SWITCHING ================= */
-
-function hideAllPages(){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(page => page.classList.add("hidden"));
-
+function startJourney() {
+  alert("Your magical gift journey is coming soon! ✨");
 }
-
-function showCreator(){
-
-  hideAllPages();
-
-  document
-    .getElementById("creatorPage")
-    .classList.remove("hidden");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-function goHome(){
-
-  hideAllPages();
-
-  document
-    .getElementById("homePage")
-    .classList.remove("hidden");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ================= PHOTO PREVIEW ================= */
-
-let selectedPhoto = "";
-
-document
-  .getElementById("photoInput")
-  .addEventListener("change", function(){
-
-    const file = this.files[0];
-
-    if(!file){
-      return;
-    }
-
-    const reader = new FileReader();
-
-    reader.onload = function(event){
-
-      selectedPhoto = event.target.result;
-
-      const preview =
-        document.getElementById("photoPreview");
-
-      preview.src = selectedPhoto;
-
-      preview.style.display = "block";
-
-    };
-
-    reader.readAsDataURL(file);
-
-  });
-
-
-/* ================= CREATE GIFT ================= */
-
-function createGift(){
-
-  const name =
-    document
-      .getElementById("recipientName")
-      .value
-      .trim();
-
-  const occasion =
-    document
-      .getElementById("occasion")
-      .value;
-
-  const message =
-    document
-      .getElementById("message")
-      .value
-      .trim();
-
-
-  if(!name){
-
-    alert("💖 Please enter the recipient's name.");
-
-    return;
-  }
-
-
-  if(!message){
-
-    alert("💌 Please write a special message.");
-
-    return;
-  }
-
-
-  document
-    .getElementById("giftName")
-    .textContent = name;
-
-
-  document
-    .getElementById("giftOccasion")
-    .textContent =
-      "✨ " + occasion + " ✨";
-
-
-  document
-    .getElementById("giftMessage")
-    .textContent = message;
-
-
-  const giftPhoto =
-    document.getElementById("giftPhoto");
-
-
-  if(selectedPhoto){
-
-    giftPhoto.src = selectedPhoto;
-
-    giftPhoto.classList.remove("hidden");
-
-  }else{
-
-    giftPhoto.classList.add("hidden");
-
-  }
-
-
-  document
-    .getElementById("flame")
-    .classList.remove("off");
-
-
-  document
-    .getElementById("wishText")
-    .textContent =
-      "🕯️ Tap the candle to make a wish";
-
-
-  document
-    .getElementById("surpriseBtn")
-    .classList.add("hidden");
-
-
-  document
-    .getElementById("surpriseMessage")
-    .classList.add("hidden");
-
-
-  hideAllPages();
-
-
-  document
-    .getElementById("giftPage")
-    .classList.remove("hidden");
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ================= CANDLE ================= */
-
-function blowCandle(){
-
-  const flame =
-    document.getElementById("flame");
-
-  if(flame.classList.contains("off")){
-    return;
-  }
-
-  flame.classList.add("off");
-
-
-  document
-    .getElementById("wishText")
-    .textContent =
-      "✨ Your wish has been made... ❤️";
-
-
-  document
-    .getElementById("surpriseBtn")
-    .classList.remove("hidden");
-
-  createConfetti();
-
-}
-
-
-/* ================= SURPRISE ================= */
-
-function showSurprise(){
-
-  document
-    .getElementById("surpriseMessage")
-    .classList.remove("hidden");
-
-  document
-    .getElementById("surpriseBtn")
-    .classList.add("hidden");
-
-  createConfetti();
-
-}
-
-
-/* ================= CONFETTI ================= */
-
-function createConfetti(){
-
-  const symbols = [
-    "💖",
-    "💕",
-    "✨",
-    "💗",
-    "🎉",
-    "❤"
-  ];
-
-  for(let i=0;i<35;i++){
-
-    const item =
-      document.createElement("div");
-
-    item.className = "confetti";
-
-    item.textContent =
-      symbols[
-        Math.floor(
-          Math.random()*symbols.length
-        )
-      ];
-
-    item.style.left =
-      Math.random()*100 + "vw";
-
-    item.style.animationDuration =
-      (2 + Math.random()*2) + "s";
-
-    document.body.appendChild(item);
-
-
-    setTimeout(()=>{
-      item.remove();
-    },4000);
-
-  }
-
-}
-
-
-/* ================= SHARE ================= */
-
-function shareGift(){
-
-  const name =
-    document
-      .getElementById("giftName")
-      .textContent;
-
-  const shareText =
-    "💖 I created a magical gift for " +
-    name +
-    " on My Magical Gift! ✨";
-
-
-  if(navigator.share){
-
-    navigator.share({
-      title:"My Magical Gift ❤️",
-      text:shareText,
-      url:window.location.href
-    });
-
-  }else{
-
-    navigator.clipboard
-      .writeText(window.location.href);
-
-    alert(
-      "🔗 Gift link copied! You can share it now."
-    );
-
-  }
-
-}
-
-
-/* ================= RATING ================= */
-
-function rate(number){
-
-  const buttons =
-    document.querySelectorAll(".star-btn");
-
-
-  buttons.forEach((button,index)=>{
-
-    if(index < number){
-
-      button.classList.add("active");
-
-    }else{
-
-      button.classList.remove("active");
-
-    }
-
-  });
-
-
-  const messages = {
-
-    1:"Thank you for your feedback ❤️",
-
-    2:"Thank you! We will make it even better 💗",
-
-    3:"Thanks for rating our magical experience ✨",
-
-    4:"We're happy you liked it! 💖",
-
-    5:"Yay! Thank you for the 5-star love! 🌟"
-
-  };
-
-
-  document
-    .getElementById("ratingResult")
-    .textContent =
-      messages[number];
-
-}
-
-
-/* ================= INITIAL PAGE ================= */
-
-hideAllPages();
-
-document
-  .getElementById("homePage")
-  .classList.remove("hidden");
-
 </script>
-
 </body>
 </html>
