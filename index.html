@@ -427,6 +427,126 @@ footer {
   .site-footer { padding: 35px 15px 25px; }
 }
 
+/* ===== MAGICAL 3D GLOW DESIGN ===== */
+
+@keyframes magicalGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px #ff4f9a55,
+                0 0 30px #a855f755;
+  }
+  50% {
+    box-shadow: 0 0 25px #ff4f9aaa,
+                0 0 45px #a855f7aa;
+  }
+}
+
+#personal-gift .card,
+#photo-memories .card {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 90, 160, 0.16),
+    rgba(120, 40, 120, 0.22)
+  ) !important;
+  border: 1px solid rgba(255, 130, 190, 0.45);
+  border-radius: 25px !important;
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.35),
+    inset 0 1px 2px rgba(255,255,255,0.18);
+  backdrop-filter: blur(15px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+#personal-gift .card:hover,
+#photo-memories .card:hover {
+  transform: translateY(-6px);
+  animation: magicalGlow 2s infinite;
+}
+
+#personal-gift input,
+#personal-gift textarea {
+  background: rgba(255,255,255,0.96) !important;
+  color: #741044 !important;
+  border: 2px solid #ff77b7 !important;
+  border-radius: 13px !important;
+  box-shadow: 0 5px 18px #ff4f9a22;
+  transition: all 0.3s ease;
+}
+
+#personal-gift input:focus,
+#personal-gift textarea:focus {
+  outline: none;
+  border-color: #ff39a0 !important;
+  box-shadow:
+    0 0 0 4px #ff55a533,
+    0 0 25px #ff55a588;
+  transform: translateY(-2px);
+}
+
+#gift-live-preview {
+  box-shadow:
+    0 12px 30px #ff4f9a33,
+    inset 0 2px 8px #ffffff99;
+  animation: magicalGlow 3s infinite;
+  transition: transform 0.3s ease;
+}
+
+#gift-live-preview:hover {
+  transform: perspective(800px) rotateX(2deg) scale(1.015);
+}
+
+/* Attractive Photo Upload Button */
+
+#memory-photos {
+  display: block;
+  width: 100%;
+  margin: 20px auto;
+  padding: 15px;
+  color: white;
+  background: linear-gradient(135deg, #641b65, #d63384);
+  border: 2px dashed #ff91c5;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px #d6338455;
+  transition: all 0.3s ease;
+}
+
+#memory-photos:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px #ff55a5aa;
+}
+
+#memory-photos::file-selector-button {
+  padding: 11px 18px;
+  margin-right: 12px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ff398b, #a832c7);
+  cursor: pointer;
+  box-shadow: 0 5px 15px #ff398b66;
+}
+
+/* Photo Cards */
+
+#memory-photo-preview > div {
+  border: 1px solid #ff80b8;
+  box-shadow: 0 8px 25px #ff398b44;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#memory-photo-preview > div:hover {
+  transform: translateY(-7px) scale(1.035);
+  box-shadow: 0 0 25px #ff398baa;
+}
+
+#memory-photo-preview img {
+  transition: transform 0.35s ease;
+}
+
+#memory-photo-preview img:hover {
+  transform: scale(1.04);
+}
 </style>
 </head>
 
