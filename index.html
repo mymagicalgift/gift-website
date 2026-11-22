@@ -839,32 +839,67 @@ function selectMusic(musicName) {
   document.getElementById("selected-music").textContent =
     "Your selected music mood: " + musicName + " 🎵";
 }
-  function previewMemoryPhotos(event) {
-  const files = event.target.files;
+ function previewMemoryPhotos(event) {
+  const files = Array.from(event.target.files);
   const preview = document.getElementById("memory-photo-preview");
 
   preview.innerHTML = "";
 
-  Array.from(files).forEach(file => {
+  files.forEach(file => {
     if (!file.type.startsWith("image/")) return;
 
-    const reader = new FileReader();
+    const url = URL.createObjectURL(file);
 
-    reader.onload = function(e) {
-      const img = document.createElement("img");
+    const card = document.createElement("div");
+    card.style.cssText =
+      "width:160px;padding:10px;background:#fff0f6;border-radius:15px;text-align:center;";
 
-      img.src = e.target.result;
-      img.alt = "Memory photo";
-      img.style.width = "130px";
-      img.style.height = "130px";
-      img.style.objectFit = "cover";
-      img.style.borderRadius = "15px";
-      img.style.border = "2px solid #ff91b9";
+    const img = document.createElement("img");
+    img.src = url;
+    img.alt = "Memory photo";
+    img.style.cssText =
+      "width:140px;height:130px;object-fit:cover;border-radius:12px;cursor:pointer;";
 
-      preview.appendChild(img);
+    // Large Photo Preview
+    img.onclick = function() {
+      const viewer = document.createElement("div");
+      viewer.style.cssText =
+        "position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:99999;padding:20px;";
+
+      const large = document.createElement("img");
+      large.src = url;
+      large.style.cssText =
+        "max-width:95%;max-height:85vh;object-fit:contain;border-radius:15px;";
+
+      viewer.appendChild(large);
+      viewer.onclick = () => viewer.remove();
+      document.body.appendChild(viewer);
     };
 
-    reader.readAsDataURL(file);
+    // Photo Caption
+    const caption = document.createElement("input");
+    caption.type = "text";
+    caption.placeholder = "Write a memory caption...";
+    caption.maxLength = 100;
+    caption.style.cssText =
+      "width:100%;box-sizing:border-box;margin-top:10px;padding:9px;border:1px solid #ff91b9;border-radius:8px;";
+
+    // Remove Photo
+    const remove = document.createElement("button");
+    remove.textContent = "Remove ✖";
+    remove.type = "button";
+    remove.style.cssText =
+      "margin-top:8px;padding:7px 12px;border:0;border-radius:8px;background:#ff5b91;color:white;";
+
+    remove.onclick = function() {
+      URL.revokeObjectURL(url);
+      card.remove();
+    };
+
+    card.appendChild(img);
+    card.appendChild(caption);
+    card.appendChild(remove);
+    preview.appendChild(card);
   });
 }
 </script>
