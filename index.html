@@ -5,17 +5,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Magical Gift | Create Something Beautiful</title>
-<meta name="description" content="Create beautiful personalized digital gifts filled with love and memories.">
+<meta name="description" content="Create beautiful personalized digital gifts filled with photos, music and heartfelt wishes.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap');
-
 :root {
   --pink:#ff5c99;
   --rose:#ff8bb5;
+  --berry:#a92760;
+  --purple:#762b83;
   --dark:#160817;
   --light:#fff2f7;
-  --gold:#ffd89a;
+  --muted:#d9bdce;
+  --panel:#2a1028;
+  --border:#ff8bb544;
 }
 
 * {
@@ -24,23 +30,34 @@
   box-sizing:border-box;
 }
 
-html { scroll-behavior:smooth; }
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:25px;
+}
 
 body {
   font-family:'DM Sans',sans-serif;
   background:var(--dark);
   color:white;
   overflow-x:hidden;
+  line-height:1.6;
 }
 
-button { font-family:inherit; cursor:pointer; }
+button, input, textarea {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
 
 .background-glow {
   position:fixed;
   inset:0;
   z-index:-2;
+  pointer-events:none;
   background:
-    radial-gradient(ellipse at 15% 15%,#781d503d,transparent 45%),
+    radial-gradient(ellipse at 12% 15%,#781d5040,transparent 45%),
     radial-gradient(ellipse at 85% 55%,#a02b6933,transparent 45%),
     linear-gradient(145deg,#160817,#270c25,#100914);
 }
@@ -49,8 +66,13 @@ nav {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:22px 8%;
-  border-bottom:1px solid #ffffff12;
+  gap:20px;
+  padding:20px 8%;
+  border-bottom:1px solid #ffffff15;
+  background:#160817c9;
+  backdrop-filter:blur(14px);
+  position:relative;
+  z-index:5;
 }
 
 .logo {
@@ -58,17 +80,28 @@ nav {
   font-size:25px;
   color:#ff91b9;
   font-weight:800;
+  white-space:nowrap;
+}
+
+nav .nav-links {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
 }
 
 nav a {
   color:#f8dce9;
   text-decoration:none;
-  margin-left:25px;
   font-size:13px;
+  transition:.25s;
+}
+
+nav a:hover {
+  color:var(--rose);
 }
 
 .hero {
-  min-height:660px;
+  min-height:650px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -85,52 +118,70 @@ nav a {
 .tag {
   display:inline-block;
   padding:10px 18px;
-  border:1px solid #ff8bb555;
+  border:1px solid #ff8bb566;
   border-radius:40px;
   color:#ffb4cf;
-  background:#ff5c9910;
+  background:#ff5c9915;
   font-size:12px;
   letter-spacing:2px;
   margin-bottom:28px;
 }
 
-h1 {
+h1, h2, h3 {
   font-family:'Playfair Display',serif;
-  font-size:clamp(43px,7vw,78px);
+}
+
+h1 {
+  font-size:clamp(42px,7vw,78px);
   line-height:1.12;
   margin-bottom:25px;
 }
 
-h1 span {
-  color:#ff82ad;
-  text-shadow:0 0 35px #ff5c9955;
+h1 span, .pink-text {
+  color:var(--rose);
+  text-shadow:0 0 30px #ff5c9955;
 }
 
 .hero p {
-  max-width:570px;
+  max-width:590px;
   margin:auto;
-  color:#d9bdce;
+  color:var(--muted);
   line-height:1.9;
   font-size:16px;
 }
 
 .primary-btn {
   display:inline-block;
-  margin-top:35px;
-  padding:17px 35px;
+  margin-top:22px;
+  padding:14px 27px;
   border:0;
   border-radius:40px;
-  color:#fff;
-  font-size:15px;
+  color:white;
+  font-size:14px;
   font-weight:700;
-  background:linear-gradient(100deg,#ff4f91,#d93683);
-  box-shadow:0 10px 35px #ff3c873e;
+  background:linear-gradient(100deg,var(--pink),#c52b78);
+  box-shadow:0 10px 30px #ff3c8740;
   transition:.3s;
 }
 
 .primary-btn:hover {
-  transform:translateY(-5px);
-  box-shadow:0 15px 40px #ff3c8770;
+  transform:translateY(-4px);
+  box-shadow:0 15px 38px #ff3c8770;
+}
+
+.secondary-btn {
+  padding:10px 17px;
+  border:1px solid #ff8bb577;
+  border-radius:25px;
+  color:#ffd4e6;
+  background:#ff5c9918;
+  font-weight:700;
+  transition:.25s;
+}
+
+.secondary-btn:hover {
+  background:#ff5c9940;
+  transform:translateY(-2px);
 }
 
 .floating-heart {
@@ -146,29 +197,30 @@ h1 span {
 .heart-three {bottom:15%;left:20%;font-size:20px;animation-delay:2s;}
 
 section {
-  padding:85px 8%;
+  padding:80px 8%;
 }
 
 .section-heading {
   text-align:center;
-  max-width:650px;
-  margin:0 auto 48px;
+  max-width:680px;
+  margin:0 auto 45px;
 }
 
 .section-heading small {
-  color:#ff8bb5;
+  color:var(--rose);
   letter-spacing:3px;
   font-weight:700;
+  font-size:11px;
 }
 
 .section-heading h2 {
-  font-family:'Playfair Display',serif;
-  font-size:clamp(30px,5vw,46px);
-  margin:15px 0;
+  font-size:clamp(30px,5vw,45px);
+  margin:13px 0;
+  line-height:1.25;
 }
 
 .section-heading p {
-  color:#cbb4c5;
+  color:var(--muted);
   line-height:1.8;
 }
 
@@ -181,38 +233,37 @@ section {
 }
 
 .card {
-  padding:30px 23px;
-  border:1px solid #ff8bb52b;
+  padding:27px 22px;
+  border:1px solid var(--border);
   border-radius:22px;
-  background:linear-gradient(145deg,#ffffff0b,#ff5c9909);
-  transition:.4s;
+  background:linear-gradient(145deg,#ffffff0c,#ff5c9910);
+  transition:transform .35s,border-color .35s,box-shadow .35s;
 }
 
 .card:hover {
-  transform:translateY(-9px);
-  border-color:#ff82ad;
-  box-shadow:0 15px 45px #ff5c9920;
+  transform:translateY(-7px);
+  border-color:var(--rose);
+  box-shadow:0 14px 38px #ff5c9925;
 }
 
 .card .emoji {
   font-size:35px;
-  margin-bottom:18px;
+  margin-bottom:15px;
 }
 
 .card h3 {
-  font-family:'Playfair Display',serif;
   font-size:21px;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
 .card p {
   font-size:13px;
-  color:#cbb4c5;
+  color:var(--muted);
   line-height:1.8;
 }
 
 .journey {
-  background:#ffffff05;
+  background:#ffffff06;
 }
 
 .steps {
@@ -222,9 +273,9 @@ section {
 
 .step {
   display:flex;
-  gap:22px;
-  padding:25px;
-  border-bottom:1px solid #ffffff14;
+  gap:20px;
+  padding:23px;
+  border-bottom:1px solid #ffffff18;
   align-items:center;
 }
 
@@ -234,38 +285,43 @@ section {
   display:grid;
   place-items:center;
   border-radius:50%;
-  background:#ff5c9920;
-  color:#ff91b9;
+  background:#ff5c9925;
+  color:var(--rose);
   font-weight:800;
 }
 
 .step p {
-  color:#cbb4c5;
-  margin-top:7px;
+  color:var(--muted);
+  margin-top:5px;
   font-size:13px;
-  line-height:1.7;
 }
 
 .plan {
   max-width:500px;
   margin:auto;
   text-align:center;
-  padding:40px;
+  padding:35px;
   border:1px solid #ff8bb566;
   border-radius:28px;
-  background:linear-gradient(145deg,#ff5c9915,#ffffff08);
+  background:linear-gradient(145deg,#ff5c9918,#ffffff08);
 }
 
 .plan h3 {
-  font-family:'Playfair Display',serif;
-  font-size:28px;
+  font-size:27px;
 }
 
 .price {
-  font-size:38px;
-  color:#ff91b9;
+  font-size:40px;
+  color:var(--rose);
   font-weight:800;
-  margin:20px;
+  margin:15px;
+}
+
+.notice {
+  color:#e8c8d9;
+  font-size:12px;
+  margin-top:15px;
+  line-height:1.7;
 }
 
 .faq {
@@ -275,7 +331,7 @@ section {
 
 details {
   border-bottom:1px solid #ffffff20;
-  padding:20px 5px;
+  padding:19px 5px;
 }
 
 summary {
@@ -284,587 +340,410 @@ summary {
 }
 
 details p {
-  color:#cbb4c5;
+  color:var(--muted);
   line-height:1.8;
-  padding-top:15px;
+  padding-top:12px;
 }
 
 .final-cta {
   text-align:center;
-  padding:100px 20px;
+  padding:90px 20px;
   background:radial-gradient(ellipse,#9c285333,transparent 70%);
+}
+
+.studio-section {
+  position:relative;
+}
+
+.studio-card {
+  max-width:680px;
+  margin:25px auto;
+  padding:28px;
+  text-align:center;
+  background:linear-gradient(135deg,#260817,#511329,#3b1238);
+  border:1px solid #c94372;
+  border-radius:25px;
+  box-shadow:0 15px 35px #0005,0 0 25px #ff5c9915;
+}
+
+.studio-card h3 {
+  margin:12px 0;
+}
+
+.studio-card > p {
+  color:var(--muted);
+  font-size:13px;
+}
+
+.selection-status {
+  color:#ffacd0;
+  text-align:center;
+  margin-top:25px;
+  font-weight:700;
+  min-height:28px;
+}
+
+.studio-input {
+  display:block;
+  width:100%;
+  margin:14px auto;
+  padding:14px;
+  border:1.5px solid #ed669b;
+  border-radius:13px;
+  background:linear-gradient(135deg,#35102f,#572044);
+  color:#fff0f7;
+  outline:none;
+  transition:.25s;
+}
+
+.studio-input::placeholder {
+  color:#d9b4dc;
+}
+
+.studio-input:focus {
+  border-color:#ff65c5;
+  box-shadow:0 0 0 3px #e85bb533,0 0 20px #ff65c566;
+}
+
+textarea.studio-input {
+  min-height:120px;
+  resize:vertical;
+}
+
+input[type="file"].studio-input {
+  cursor:pointer;
+  border-style:dashed;
+}
+
+input[type="file"]::file-selector-button {
+  padding:9px 13px;
+  margin-right:10px;
+  border:0;
+  border-radius:9px;
+  background:linear-gradient(135deg,#ff398b,#a832c7);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+
+#memory-photo-preview {
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  justify-content:center;
+  margin-top:22px;
+}
+
+.photo-card {
+  width:165px;
+  padding:10px;
+  background:linear-gradient(145deg,#351329,#572044);
+  border:1px solid #e85bb5;
+  border-radius:16px;
+  box-shadow:0 8px 22px #0004;
+}
+
+.photo-card img {
+  width:100%;
+  height:130px;
+  object-fit:cover;
+  border-radius:11px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.photo-card img:hover {
+  transform:scale(1.035);
+}
+
+.photo-card input {
+  width:100%;
+  margin-top:9px;
+  padding:8px;
+  border:1px solid #e85bb5;
+  border-radius:8px;
+  background:#351329;
+  color:white;
+  font-size:11px;
+}
+
+.photo-card button {
+  width:100%;
+  margin-top:8px;
+  padding:7px;
+  border:0;
+  border-radius:8px;
+  background:linear-gradient(135deg,#ff5c99,#a92760);
+  color:white;
+  font-weight:700;
+}
+
+#gift-live-preview {
+  margin-top:22px;
+  padding:25px;
+  background:linear-gradient(135deg,#300d25,#641638,#42113f);
+  border:2px solid #e65a91;
+  border-radius:22px;
+  box-shadow:0 0 20px #d85ba944,inset 0 0 20px #ffffff0a;
+  overflow-wrap:anywhere;
+}
+
+#gift-live-preview h3 {
+  color:#f28acb;
+  margin-bottom:12px;
+}
+
+#gift-live-preview h2 {
+  color:#ffc4df;
+  margin-bottom:10px;
+}
+
+#gift-live-preview p {
+  color:#e8c8ff;
+  line-height:1.8;
+  white-space:pre-wrap;
+}
+
+.summary-list {
+  list-style:none;
+  text-align:left;
+  margin:18px auto;
+  max-width:450px;
+}
+
+.summary-list li {
+  padding:9px 0;
+  border-bottom:1px solid #ffffff16;
+  color:#f5d5e5;
+  font-size:14px;
+}
+
+#photo-viewer {
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:#000e;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+#photo-viewer img {
+  max-width:95%;
+  max-height:85vh;
+  object-fit:contain;
+  border-radius:15px;
+  box-shadow:0 0 30px #ff5c9955;
+}
+
+#photo-viewer button {
+  position:absolute;
+  top:20px;
+  right:20px;
+  padding:10px 15px;
+  border:0;
+  border-radius:20px;
+  background:#ff5c99;
+  color:white;
+  font-weight:700;
 }
 
 footer {
   text-align:center;
-  padding:35px 15px;
-  border-top:1px solid #ffffff15;
-  color:#cbb4c5;
+  padding:42px 15px 28px;
+  background:linear-gradient(135deg,#250719,#4b102e,#210817);
+  border-top:1px solid #ff82be55;
+  color:#ffe0ed;
   font-size:13px;
   line-height:2;
 }
 
-.founder {
-  color:#ff91b9;
-  font-family:'Playfair Display',serif;
-  font-size:21px;
-  font-weight:800;
+.footer-magic {
+  font-family:Georgia,serif;
+  font-size:16px;
+  color:#ffd0e5;
+  margin-bottom:20px;
+  animation:footerGlow 3s ease-in-out infinite;
+}
+
+.footer-ribbon {
+  display:inline-block;
+  font-size:40px;
+  animation:ribbonFloat 2s ease-in-out infinite;
+}
+
+.footer-founder-label {
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:4px;
+  color:#ff9bc8;
+  margin-top:8px;
+}
+
+.footer-name {
+  display:inline-block;
+  font-family:Georgia,serif;
+  font-size:36px;
+  font-weight:900;
+  background:linear-gradient(90deg,#ffb2d5,#ff5eaa,#ffd3e8);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:nameShine 3s linear infinite;
+}
+
+.footer-tagline {
+  color:#f5c4d9;
+  margin-top:10px;
+}
+
+.footer-line {
+  width:100px;
+  height:2px;
+  margin:22px auto;
+  background:linear-gradient(90deg,transparent,#ff70b5,transparent);
+}
+
+.footer-copy {
+  color:#d9aabd;
+  font-size:12px;
+}
+
+/* Theme choices */
+body[data-theme="red"] {
+  --pink:#ff536e;
+  --rose:#ff8795;
+  --berry:#b51e42;
+  --purple:#82264d;
+  --border:#ff879555;
+}
+
+body[data-theme="purple"] {
+  --pink:#c477ff;
+  --rose:#d9a3ff;
+  --berry:#7737a8;
+  --purple:#512b83;
+  --border:#d9a3ff55;
+}
+
+body[data-theme="blue"] {
+  --pink:#56bfff;
+  --rose:#9bdcff;
+  --berry:#236b9e;
+  --purple:#274d83;
+  --border:#9bdcff55;
+}
+
+body[data-theme="green"] {
+  --pink:#62d6a0;
+  --rose:#a0edc2;
+  --berry:#287b55;
+  --purple:#275f55;
+  --border:#a0edc255;
+}
+
+body[data-theme="peach"] {
+  --pink:#ff987b;
+  --rose:#ffc0a7;
+  --berry:#b85d58;
+  --purple:#78415f;
+  --border:#ffc0a755;
 }
 
 @keyframes fadeUp {
-  from {opacity:0;transform:translateY(35px);}
+  from {opacity:0;transform:translateY(30px);}
   to {opacity:1;transform:translateY(0);}
 }
 
 @keyframes float {
   0%,100% {transform:translateY(0) rotate(-8deg);}
-  50% {transform:translateY(-25px) rotate(10deg);}
-}
-
-@media(max-width:650px) {
-  nav {padding:18px 5%;}
-  nav a {margin-left:9px;font-size:11px;}
-  .logo {font-size:19px;}
-  section {padding:65px 6%;}
-  .hero {min-height:590px;}
-  .step {padding:20px 5px;}
-}
-  
-/* ===== PREMIUM FOOTER DESIGN ===== */
-
-.site-footer {
-  text-align: center;
-  padding: 45px 20px 30px;
-  margin-top: 45px;
-  background: linear-gradient(135deg, #250719, #4b102e, #210817);
-  border-top: 1px solid rgba(255, 130, 190, 0.3);
-  color: #ffe0ed;
-  position: relative;
-  overflow: hidden;
-}
-
-.footer-magic {
-  font-family: 'Georgia', serif;
-  font-size: 16px;
-  letter-spacing: 1px;
-  color: #ffd0e5;
-  margin-bottom: 22px;
-  animation: footerGlow 3s ease-in-out infinite;
-}
-
-.footer-founder {
-  margin: 15px auto;
-}
-
-.footer-ribbon {
-  display: inline-block;
-  font-size: 40px;
-  animation: ribbonFloat 2s ease-in-out infinite;
-}
-
-.footer-founder-label {
-  font-family: 'Trebuchet MS', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  color: #ff9bc8;
-  margin-top: 8px;
-}
-
-.footer-name {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 36px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  margin-top: 10px;
-  display: inline-block;
-  background: linear-gradient(90deg, #ffb2d5, #ff5eaa, #ffd3e8);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: nameShine 3s linear infinite;
-}
-
-.footer-tagline {
-  font-family: 'Trebuchet MS', sans-serif;
-  font-size: 13px;
-  color: #f5c4d9;
-  margin-top: 12px;
-}
-
-.footer-line {
-  width: 100px;
-  height: 2px;
-  margin: 24px auto;
-  background: linear-gradient(90deg, transparent, #ff70b5, transparent);
-}
-
-.footer-copy {
-  font-family: 'Trebuchet MS', sans-serif;
-  font-size: 12px;
-  line-height: 2;
-  color: #d9aabd;
+  50% {transform:translateY(-23px) rotate(10deg);}
 }
 
 @keyframes ribbonFloat {
-  0%, 100% { transform: translateY(0) rotate(-5deg); }
-  50% { transform: translateY(-9px) rotate(5deg); }
+  0%,100% {transform:translateY(0) rotate(-5deg);}
+  50% {transform:translateY(-8px) rotate(5deg);}
 }
 
 @keyframes nameShine {
-  to { background-position: 200% center; }
+  to {background-position:200% center;}
 }
 
 @keyframes footerGlow {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
+  0%,100% {opacity:.8;}
+  50% {opacity:1;}
 }
 
-@media (max-width: 600px) {
-  .footer-name { font-size: 30px; }
-  .footer-magic { font-size: 14px; }
-  .site-footer { padding: 35px 15px 25px; }
-}
-
-/* ===== MAGICAL 3D GLOW DESIGN ===== */
-
-@keyframes magicalGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px #ff4f9a55,
-                0 0 30px #a855f755;
+@media(max-width:700px) {
+  nav {
+    flex-direction:column;
+    padding:17px 5%;
   }
-  50% {
-    box-shadow: 0 0 25px #ff4f9aaa,
-                0 0 45px #a855f7aa;
+
+  nav .nav-links {
+    justify-content:center;
+    gap:13px;
+  }
+
+  nav a {
+    font-size:11px;
+  }
+
+  .logo {
+    font-size:21px;
+  }
+
+  section {
+    padding:62px 6%;
+  }
+
+  .hero {
+    min-height:570px;
+  }
+
+  .step {
+    padding:18px 5px;
+  }
+
+  .studio-card {
+    padding:20px 15px;
+  }
+
+  .footer-name {
+    font-size:30px;
   }
 }
 
-#personal-gift .card,
-#photo-memories .card {
-  background: linear-gradient(
-    145deg,
-    rgba(255, 90, 160, 0.16),
-    rgba(120, 40, 120, 0.22)
-  ) !important;
-  border: 1px solid rgba(255, 130, 190, 0.45);
-  border-radius: 25px !important;
-  box-shadow:
-    0 15px 35px rgba(0,0,0,0.35),
-    inset 0 1px 2px rgba(255,255,255,0.18);
-  backdrop-filter: blur(15px);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-#personal-gift .card:hover,
-#photo-memories .card:hover {
-  transform: translateY(-6px);
-  animation: magicalGlow 2s infinite;
-}
-
-#personal-gift input,
-#personal-gift textarea {
-  background: rgba(255,255,255,0.96) !important;
-  color: #741044 !important;
-  border: 2px solid #ff77b7 !important;
-  border-radius: 13px !important;
-  box-shadow: 0 5px 18px #ff4f9a22;
-  transition: all 0.3s ease;
-}
-
-#personal-gift input:focus,
-#personal-gift textarea:focus {
-  outline: none;
-  border-color: #ff39a0 !important;
-  box-shadow:
-    0 0 0 4px #ff55a533,
-    0 0 25px #ff55a588;
-  transform: translateY(-2px);
-}
-
-#gift-live-preview {
-  box-shadow:
-    0 12px 30px #ff4f9a33,
-    inset 0 2px 8px #ffffff99;
-  animation: magicalGlow 3s infinite;
-  transition: transform 0.3s ease;
-}
-
-#gift-live-preview:hover {
-  transform: perspective(800px) rotateX(2deg) scale(1.015);
-}
-
-/* Attractive Photo Upload Button */
-
-#memory-photos {
-  display: block;
-  width: 100%;
-  margin: 20px auto;
-  padding: 15px;
-  color: white;
-  background: linear-gradient(135deg, #641b65, #d63384);
-  border: 2px dashed #ff91c5;
-  border-radius: 16px;
-  cursor: pointer;
-  box-shadow: 0 8px 25px #d6338455;
-  transition: all 0.3s ease;
-}
-
-#memory-photos:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 25px #ff55a5aa;
-}
-
-#memory-photos::file-selector-button {
-  padding: 11px 18px;
-  margin-right: 12px;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-weight: bold;
-  background: linear-gradient(135deg, #ff398b, #a832c7);
-  cursor: pointer;
-  box-shadow: 0 5px 15px #ff398b66;
-}
-
-/* Photo Cards */
-
-#memory-photo-preview > div {
-  border: 1px solid #ff80b8;
-  box-shadow: 0 8px 25px #ff398b44;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#memory-photo-preview > div:hover {
-  transform: translateY(-7px) scale(1.035);
-  box-shadow: 0 0 25px #ff398baa;
-}
-
-#memory-photo-preview img {
-  transition: transform 0.35s ease;
-}
-
-#memory-photo-preview img:hover {
-  transform: scale(1.04);
-}
-  
-/* ===== ROYAL CHAMPAGNE LUXURY UPGRADE ===== */
-
-/* Premium Name & Message Boxes */
-#personal-gift input,
-#personal-gift textarea {
-  background: linear-gradient(
-    135deg,
-    #3b1732,
-    #54213f
-  ) !important;
-
-  color: #fff0d8 !important;
-  border: 1.5px solid #d9a85f !important;
-  border-radius: 15px !important;
-
-  box-shadow:
-    inset 0 3px 8px #18081788,
-    0 5px 18px #d9a85f22;
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.3px;
-}
-
-#personal-gift input::placeholder,
-#personal-gift textarea::placeholder {
-  color: #e8bfd2 !important;
-  opacity: 0.85;
-}
-#personal-gift input:focus,
-#personal-gift textarea:focus {
-  background: linear-gradient(
-    135deg,
-    #51203f,
-    #70264f
-  ) !important;
-
-  border-color: #f4c879 !important;
-
-  box-shadow:
-    0 0 0 3px #e8b97833,
-    0 0 25px #e8b97877;
-
-  transform: translateY(-2px);
-}
-
-/* Royal Elegant Heading Font */
-#personal-gift h3 {
-  font-family:
-    "Palatino Linotype",
-    "Book Antiqua",
-    Georgia,
-    serif !important;
-
-  font-size: 23px;
-  font-weight: 700;
-  letter-spacing: 0.4px;
-  color: #ffe1b0;
-
-  text-shadow:
-    0 2px 8px #e8b97855;
-}
-
-/* Golden Luxury Preview */
-#gift-live-preview {
-  background: linear-gradient(
-    135deg,
-    #f8e8d6,
-    #f5d4df,
-    #ead3e9
-  ) !important;
-
-  border: 2px solid #d9a85f !important;
-  border-radius: 20px !important;
-
-  color: #702448 !important;
-
-  box-shadow:
-    0 10px 30px #d9a85f33,
-    inset 0 0 18px #ffffff88;
-}
-
-#gift-live-preview h3 {
-  color: #9b5d20 !important;
-  font-family: Georgia, serif !important;
-}
-
-#gift-live-preview h2 {
-  color: #922653 !important;
-  text-shadow: 0 2px 8px #e8a9c455;
-}
-
-#gift-live-preview p {
-  color: #71364f !important;
-  font-size: 15px;
-  line-height: 1.7;
-}
-  
-/* ===== PHOTO MEMORIES ROYAL DARK THEME ===== */
-
-/* Photo Card Background */
-#memory-photo-preview > div {
-  background: linear-gradient(
-    145deg,
-    #351329,
-    #572044,
-    #3d1735
-  ) !important;
-
-  border: 1.5px solid #d9ad68 !important;
-  border-radius: 18px !important;
-
-  box-shadow:
-    0 8px 22px #d9ad6840,
-    inset 0 1px 8px #ffffff12 !important;
-}
-
-/* Caption Input - Remove White */
-#memory-photo-preview input {
-  background: linear-gradient(
-    135deg,
-    #351329,
-    #54203f
-  ) !important;
-
-  color: #ffe6bd !important;
-  border: 1px solid #d9ad68 !important;
-  border-radius: 10px !important;
-
-  box-shadow: 0 0 12px #d9ad6833;
-}
-
-#memory-photo-preview input::placeholder {
-  color: #e5bfd0 !important;
-}
-
-/* Remove Button - Royal Rose Gold */
-#memory-photo-preview button {
-  background: linear-gradient(
-    135deg,
-    #d9ad68,
-    #a96886
-  ) !important;
-
-  color: #351329 !important;
-  border: 1px solid #ffe0a5 !important;
-  border-radius: 10px !important;
-  font-weight: 700;
-
-  box-shadow: 0 5px 15px #d9ad6855;
-  transition: 0.3s ease;
-}
-
-#memory-photo-preview button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 22px #e8b978aa;
-}
-
-/* Photo Border */
-#memory-photo-preview img {
-  border: 2px solid #d9ad68;
-  box-shadow: 0 5px 18px #d9ad6844;
-}
-  
-
-/* ===== ROYAL BERRY & LAVENDER PREVIEW ===== */
-
-#gift-live-preview {
-  background: linear-gradient(
-    135deg,
-    #250d2b 0%,
-    #481442 50%,
-    #321044 100%
-  ) !important;
-
-  border: 2px solid #d85ba9 !important;
-  border-radius: 22px !important;
-
-  box-shadow:
-    0 0 15px #d85ba966,
-    0 0 35px #922b7555,
-    inset 0 0 22px #ffffff0a !important;
-
-  color: #f5dfff !important;
-}
-
-#gift-live-preview h3 {
-  color: #f28acb !important;
-  text-shadow: 0 0 12px #ed65bc88;
-}
-
-#gift-live-preview h2 {
-  color: #f5c9ff !important;
-  text-shadow: 0 0 15px #d85ba988;
-}
-
-#gift-live-preview p {
-  color: #e8c8ff !important;
-  opacity: 1 !important;
-  line-height: 1.7;
-}
-
-#gift-live-preview:hover {
-  box-shadow:
-    0 0 22px #ed65bc99,
-    0 0 45px #922b7599,
-    inset 0 0 25px #ffffff12 !important;
-}
-  
-/* ===== REMOVE GOLD FROM INPUT AREA ===== */
-
-#personal-gift input,
-#personal-gift textarea {
-  background: linear-gradient(
-    135deg,
-    #35102f,
-    #572044,
-    #40143e
-  ) !important;
-
-  color: #f5dfff !important;
-  border: 1.5px solid #e85bb5 !important;
-
-  box-shadow:
-    0 0 10px #e85bb533,
-    inset 0 2px 8px #18081755 !important;
-
-  border-radius: 15px !important;
-}
-
-#personal-gift input::placeholder,
-#personal-gift textarea::placeholder {
-  color: #d9b4dc !important;
-}
-
-#personal-gift input:focus,
-#personal-gift textarea:focus {
-  border-color: #ff65c5 !important;
-
-  box-shadow:
-    0 0 0 3px #e85bb533,
-    0 0 22px #ff65c588 !important;
-}
-
-/* Message Heading - Lavender Pink */
-
-#personal-gift h3 {
-  color: #f0baff !important;
-
-  text-shadow:
-    0 0 8px #d85ba977,
-    0 0 18px #a855f755 !important;
-}
-
-/* Keep the Live Preview Design Unchanged */
-
-/* ===== ROYAL RED BERRY THEME ===== */
-
-#personal-gift .card,
-#photo-memories .card {
-  background: linear-gradient(
-    135deg,
-    #260817,
-    #511329,
-    #3b1238
-  ) !important;
-  border-color: #c94372 !important;
-}
-
-#personal-gift input,
-#personal-gift textarea {
-  background: linear-gradient(
-    135deg,
-    #3b1026,
-    #641b3d
-  ) !important;
-  border-color: #ed669b !important;
-}
-
-#personal-gift h3 {
-  color: #f5b5d2 !important;
-}
-
-#gift-live-preview {
-  background: linear-gradient(
-    135deg,
-    #300d25,
-    #641638,
-    #42113f
-  ) !important;
-  border-color: #e65a91 !important;
-}
-
-#gift-live-preview h2,
-#gift-live-preview h3 {
-  color: #ffc4df !important;
-}
-
-#gift-live-preview p {
-  color: #e8c8ff !important;
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
 }
 </style>
 </head>
 
-<body>
+<body data-theme="pink">
+
 <div class="background-glow"></div>
 
 <nav>
   <div class="logo">My Magical Gift ♡</div>
-  <div>
+  <div class="nav-links">
     <a href="#occasions">Occasions</a>
-    <a href="#journey">Journey</a>
+    <a href="#journey">Features</a>
+    <a href="#cake-studio">Create Gift</a>
     <a href="#faq">FAQs</a>
   </div>
 </nav>
 
 <main>
+
+<!-- HERO -->
 <div class="hero">
   <span class="floating-heart heart-one">♡</span>
   <span class="floating-heart heart-two">♥</span>
@@ -884,10 +763,11 @@ footer {
   </div>
 </div>
 
+<!-- OCCASIONS -->
 <section id="occasions">
   <div class="section-heading">
     <small>MADE FOR EVERY MOMENT</small>
-    <h2>Made for Every <span style="color:#ff82ad">Occasion</span> ♡</h2>
+    <h2>Made for Every <span class="pink-text">Occasion</span> ♡</h2>
     <p>Every beautiful moment deserves a gift that feels personal.</p>
   </div>
 
@@ -900,65 +780,75 @@ footer {
   </div>
 </section>
 
+<!-- FEATURES -->
 <section class="journey" id="journey">
   <div class="section-heading">
     <small>YOUR OWN LITTLE WORLD</small>
-    <h2>Everything Inside the <span style="color:#ff82ad">Journey</span></h2>
+    <h2>Everything Inside the <span class="pink-text">Journey</span></h2>
     <p>Build a gift that tells your own story.</p>
   </div>
 
   <div class="grid">
-    <div class="card"><div class="emoji">🎨</div><h3>Beautiful Themes</h3><p>Explore a collection of unique glowing themes.</p></div>
+    <div class="card"><div class="emoji">🎨</div><h3>Beautiful Themes</h3><p>Explore a collection of glowing colour themes.</p></div>
     <div class="card"><div class="emoji">🎁</div><h3>Gift Wrapping</h3><p>Choose your favourite gift presentation.</p></div>
     <div class="card"><div class="emoji">🎂</div><h3>Special Cakes</h3><p>Add a beautiful cake to your celebration.</p></div>
-    <div class="card"><div class="emoji">🎵</div><h3>Your Music</h3><p>Add a song that makes the moment special.</p></div>
+    <div class="card"><div class="emoji">🎵</div><h3>Your Music</h3><p>Upload a song that makes the moment special.</p></div>
     <div class="card"><div class="emoji">📸</div><h3>Photo Memories</h3><p>Collect your favourite pictures and captions.</p></div>
-    <div class="card"><div class="emoji">💌</div><h3>Personal Wishes</h3><p>Write letters and heartfelt messages.</p></div>
-    <div class="card"><div class="emoji">🧩</div><h3>Little Games</h3><p>Add fun interactive surprises.</p></div>
-    <div class="card"><div class="emoji">✨</div><h3>Final Surprise</h3><p>Finish with a memorable reveal.</p></div>
+    <div class="card"><div class="emoji">💌</div><h3>Personal Wishes</h3><p>Write heartfelt messages for someone special.</p></div>
+    <div class="card"><div class="emoji">✨</div><h3>Live Preview</h3><p>See your name and message in a gift preview.</p></div>
+    <div class="card"><div class="emoji">🎀</div><h3>Personal Touch</h3><p>Choose details that make your gift unique.</p></div>
   </div>
 </section>
 
+<!-- HOW IT WORKS -->
 <section>
   <div class="section-heading">
     <small>SIMPLE AND BEAUTIFUL</small>
     <h2>How It Works</h2>
     <p>Creating something magical should feel easy.</p>
   </div>
+
   <div class="steps">
     <div class="step"><div class="step-number">01</div><div><h3>Choose Your Style</h3><p>Pick the occasion and your favourite theme.</p></div></div>
     <div class="step"><div class="step-number">02</div><div><h3>Make It Personal</h3><p>Add your photos, music, wishes and surprises.</p></div></div>
     <div class="step"><div class="step-number">03</div><div><h3>Preview Your Gift</h3><p>See your creation before publishing.</p></div></div>
-    <div class="step"><div class="step-number">04</div><div><h3>Share the Magic</h3><p>Publish your gift and share its private link.</p></div></div>
+    <div class="step"><div class="step-number">04</div><div><h3>Share the Magic</h3><p>Online publishing and shareable links will need to be connected.</p></div></div>
   </div>
 </section>
 
+<!-- PRICING -->
 <section>
   <div class="section-heading">
     <small>ONE SIMPLE PLAN</small>
     <h2>Loved by Thoughtful Gifters</h2>
-    <p>A simple and transparent way to create something meaningful.</p>
+    <p>A simple and transparent plan for creating something meaningful.</p>
   </div>
+
   <div class="plan">
     <h3>One Magical Gift</h3>
     <div class="price">₹99</div>
-    <p>One-time publishing price for other users. Owner access and any free redemption options will be configured separately.</p>
+    <p>Planned one-time publishing price for other users.</p>
+    <p class="notice">Payment is not connected yet. A secure payment system and owner access rules must be set up before this price can be collected.</p>
   </div>
 </section>
 
+<!-- FAQ -->
 <section id="faq">
   <div class="section-heading">
     <small>NEED TO KNOW?</small>
     <h2>Frequently Asked Questions</h2>
   </div>
+
   <div class="faq">
-    <details><summary>Can I personalise my gift?</summary><p>Yes! The planned gift builder will let you add your own photos, music, messages and more.</p></details>
-    <details><summary>Can I share my gift?</summary><p>Yes. The finished experience is designed to be shared through a private link.</p></details>
-    <details><summary>Can I preview my gift?</summary><p>Yes. A preview step will be included before publishing.</p></details>
-    <details><summary>Can I create different types of gifts?</summary><p>Yes. Birthday, friendship, romantic, anniversary and other occasions are planned.</p></details>
+    <details><summary>Can I personalise my gift?</summary><p>Yes. You can enter a recipient name, write a personal message, upload photos and choose gift details.</p></details>
+    <details><summary>Can I upload my own music?</summary><p>Yes. You can upload an audio file and play it in the current browser session.</p></details>
+    <details><summary>Can I preview my gift?</summary><p>Yes. The Personal Gift Studio shows a live preview of your name and message.</p></details>
+    <details><summary>Can I share my finished gift?</summary><p>Online sharing is a planned feature. It needs online storage and a publishing system before it can work.</p></details>
+    <details><summary>Are my uploaded photos stored online?</summary><p>No. At the moment, photo and music previews are local to your current browser session.</p></details>
   </div>
 </section>
 
+<!-- FINAL CTA -->
 <div class="final-cta">
   <div class="section-heading">
     <small>YOUR MAGIC STARTS HERE</small>
@@ -968,7 +858,8 @@ footer {
   </div>
 </div>
 
-<section class="cake-studio" id="cake-studio">
+<!-- CAKE STUDIO -->
+<section class="studio-section" id="cake-studio">
   <div class="section-heading">
     <small>A LITTLE SWEETNESS</small>
     <h2>Choose Your Dream Cake 🎂</h2>
@@ -976,63 +867,20 @@ footer {
   </div>
 
   <div class="grid">
-    <div class="card">
-      <div class="emoji">🎂</div>
-      <h3>Classic Birthday</h3>
-      <p>A timeless cake for a magical birthday.</p>
-      <button class="primary-btn" onclick="selectCake('Classic Birthday')">Choose Cake</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">🍓</div>
-      <h3>Strawberry Love</h3>
-      <p>A sweet strawberry-inspired celebration.</p>
-      <button class="primary-btn" onclick="selectCake('Strawberry Love')">Choose Cake</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">🍫</div>
-      <h3>Chocolate Dream</h3>
-      <p>A rich chocolate-themed cake design.</p>
-      <button class="primary-btn" onclick="selectCake('Chocolate Dream')">Choose Cake</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">🌸</div>
-      <h3>Pink Blossom</h3>
-      <p>A lovely pink cake for sweet moments.</p>
-      <button class="primary-btn" onclick="selectCake('Pink Blossom')">Choose Cake</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">💜</div>
-      <h3>Lavender Dream</h3>
-      <p>A dreamy cake with a soft purple theme.</p>
-      <button class="primary-btn" onclick="selectCake('Lavender Dream')">Choose Cake</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">👑</div>
-      <h3>Royal Celebration</h3>
-      <p>A royal-inspired cake for a grand moment.</p>
-      <button class="primary-btn" onclick="selectCake('Royal Celebration')">Choose Cake</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">❤️</div>
-      <h3>Heart Cake</h3>
-      <p>A heart-themed cake for a special person.</p>
-      <button class="primary-btn" onclick="selectCake('Heart Cake')">Choose Cake</button>
-    </div>
+    <div class="card"><div class="emoji">🎂</div><h3>Classic Birthday</h3><p>A timeless cake for a magical birthday.</p><button class="primary-btn" onclick="selectCake('Classic Birthday')">Choose Cake</button></div>
+    <div class="card"><div class="emoji">🍓</div><h3>Strawberry Love</h3><p>A sweet strawberry-inspired celebration.</p><button class="primary-btn" onclick="selectCake('Strawberry Love')">Choose Cake</button></div>
+    <div class="card"><div class="emoji">🍫</div><h3>Chocolate Dream</h3><p>A rich chocolate-themed cake design.</p><button class="primary-btn" onclick="selectCake('Chocolate Dream')">Choose Cake</button></div>
+    <div class="card"><div class="emoji">🌸</div><h3>Pink Blossom</h3><p>A lovely pink cake for sweet moments.</p><button class="primary-btn" onclick="selectCake('Pink Blossom')">Choose Cake</button></div>
+    <div class="card"><div class="emoji">💜</div><h3>Lavender Dream</h3><p>A dreamy cake with a soft purple theme.</p><button class="primary-btn" onclick="selectCake('Lavender Dream')">Choose Cake</button></div>
+    <div class="card"><div class="emoji">👑</div><h3>Royal Celebration</h3><p>A royal-inspired cake for a grand moment.</p><button class="primary-btn" onclick="selectCake('Royal Celebration')">Choose Cake</button></div>
+    <div class="card"><div class="emoji">❤️</div><h3>Heart Cake</h3><p>A heart-themed cake for a special person.</p><button class="primary-btn" onclick="selectCake('Heart Cake')">Choose Cake</button></div>
   </div>
 
-  <p id="selected-cake" style="text-align:center;color:#ff91b9;margin-top:30px;">
-    No cake selected yet.
-  </p>
+  <p class="selection-status" id="selected-cake">No cake selected yet.</p>
 </section>
 
-<!-- ===== GIFT WRAPPING STUDIO ===== -->
-<section id="gift-wrapping">
+<!-- GIFT WRAPPING -->
+<section class="studio-section" id="gift-wrapping">
   <div class="section-heading">
     <small>MAKE IT BEAUTIFUL</small>
     <h2>Choose Your Gift Wrap 🎁</h2>
@@ -1040,199 +888,151 @@ footer {
   </div>
 
   <div class="grid">
-    <div class="card">
-      <div class="emoji">🎀</div>
-      <h3>Pink Elegance</h3>
-      <p>A soft pink gift with a lovely ribbon.</p>
-      <button class="primary-btn" onclick="selectWrap('Pink Elegance')">Choose Wrap</button>
-    </div>
-    <div class="card">
-      <div class="emoji">❤️</div>
-      <h3>Red Romance</h3>
-      <p>A beautiful red romantic gift box.</p>
-      <button class="primary-btn" onclick="selectWrap('Red Romance')">Choose Wrap</button>
-    </div>
-    <div class="card">
-      <div class="emoji">✨</div>
-      <h3>Golden Luxury</h3>
-      <p>A golden look for a special surprise.</p>
-      <button class="primary-btn" onclick="selectWrap('Golden Luxury')">Choose Wrap</button>
-    </div>
-    <div class="card">
-      <div class="emoji">💜</div>
-      <h3>Lavender Dream</h3>
-      <p>A dreamy purple gift presentation.</p>
-      <button class="primary-btn" onclick="selectWrap('Lavender Dream')">Choose Wrap</button>
-    </div>
-    <div class="card">
-      <div class="emoji">🌸</div>
-      <h3>Blossom Gift</h3>
-      <p>A floral-inspired gift wrapping style.</p>
-      <button class="primary-btn" onclick="selectWrap('Blossom Gift')">Choose Wrap</button>
-    </div>
-    <div class="card">
-      <div class="emoji">🖤</div>
-      <h3>Midnight Luxury</h3>
-      <p>A classy dark gift with a premium feel.</p>
-      <button class="primary-btn" onclick="selectWrap('Midnight Luxury')">Choose Wrap</button>
-    </div>
+    <div class="card"><div class="emoji">🎀</div><h3>Pink Elegance</h3><p>A soft pink gift with a lovely ribbon.</p><button class="primary-btn" onclick="selectWrap('Pink Elegance')">Choose Wrap</button></div>
+    <div class="card"><div class="emoji">❤️</div><h3>Red Romance</h3><p>A beautiful red romantic gift box.</p><button class="primary-btn" onclick="selectWrap('Red Romance')">Choose Wrap</button></div>
+    <div class="card"><div class="emoji">✨</div><h3>Golden Luxury</h3><p>A golden look for a special surprise.</p><button class="primary-btn" onclick="selectWrap('Golden Luxury')">Choose Wrap</button></div>
+    <div class="card"><div class="emoji">💜</div><h3>Lavender Dream</h3><p>A dreamy purple gift presentation.</p><button class="primary-btn" onclick="selectWrap('Lavender Dream')">Choose Wrap</button></div>
+    <div class="card"><div class="emoji">🌸</div><h3>Blossom Gift</h3><p>A floral-inspired gift wrapping style.</p><button class="primary-btn" onclick="selectWrap('Blossom Gift')">Choose Wrap</button></div>
+    <div class="card"><div class="emoji">🖤</div><h3>Midnight Luxury</h3><p>A classy dark gift with a premium feel.</p><button class="primary-btn" onclick="selectWrap('Midnight Luxury')">Choose Wrap</button></div>
   </div>
-  <p id="selected-wrap" style="text-align:center;color:#ff91b9;margin-top:30px;">No gift wrap selected yet.</p>
+
+  <p class="selection-status" id="selected-wrap">No gift wrap selected yet.</p>
 </section>
 
-<!-- ===== THEME STUDIO ===== -->
-<section id="theme-studio" class="journey">
+<!-- THEME STUDIO -->
+<section class="studio-section journey" id="theme-studio">
   <div class="section-heading">
     <small>CREATE YOUR OWN WORLD</small>
     <h2>Choose Your Magical Theme 🎨</h2>
-    <p>Choose a colour mood for your special gift.</p>
+    <p>Choose a colour mood. Your website colours will change with your selection.</p>
   </div>
 
   <div class="grid">
-    <div class="card"><div class="emoji">🌹</div><h3>Romantic Red</h3><p>Warm red shades and romantic details.</p><button class="primary-btn" onclick="selectTheme('Romantic Red')">Choose Theme</button></div>
-    <div class="card"><div class="emoji">💗</div><h3>Lovely Pink</h3><p>Soft pink shades and sweet details.</p><button class="primary-btn" onclick="selectTheme('Lovely Pink')">Choose Theme</button></div>
-    <div class="card"><div class="emoji">💜</div><h3>Dreamy Purple</h3><p>A dreamy purple-inspired world.</p><button class="primary-btn" onclick="selectTheme('Dreamy Purple')">Choose Theme</button></div>
-    <div class="card"><div class="emoji">🌊</div><h3>Ocean Blue</h3><p>Cool blue shades for a calm feeling.</p><button class="primary-btn" onclick="selectTheme('Ocean Blue')">Choose Theme</button></div>
-    <div class="card"><div class="emoji">🌿</div><h3>Nature Green</h3><p>Fresh green shades and natural charm.</p><button class="primary-btn" onclick="selectTheme('Nature Green')">Choose Theme</button></div>
-    <div class="card"><div class="emoji">👑</div><h3>Royal Gold</h3><p>A golden theme for a grand moment.</p><button class="primary-btn" onclick="selectTheme('Royal Gold')">Choose Theme</button></div>
-    <div class="card"><div class="emoji">🌙</div><h3>Midnight</h3><p>A magical night-inspired design.</p><button class="primary-btn" onclick="selectTheme('Midnight')">Choose Theme</button></div>
-    <div class="card"><div class="emoji">🍑</div><h3>Peach Glow</h3><p>Warm peach shades and gentle glow.</p><button class="primary-btn" onclick="selectTheme('Peach Glow')">Choose Theme</button></div>
-    <div class="card"><div class="emoji">🧸</div><h3>Cute Pastel</h3><p>Playful pastel colours and cute details.</p><button class="primary-btn" onclick="selectTheme('Cute Pastel')">Choose Theme</button></div>
-    <div class="card"><div class="emoji">✨</div><h3>Starlight</h3><p>A sparkling theme inspired by stars.</p><button class="primary-btn" onclick="selectTheme('Starlight')">Choose Theme</button></div>
+    <div class="card"><div class="emoji">🌹</div><h3>Romantic Red</h3><p>Warm red shades and romantic details.</p><button class="primary-btn" onclick="selectTheme('Romantic Red','red')">Choose Theme</button></div>
+    <div class="card"><div class="emoji">💗</div><h3>Lovely Pink</h3><p>Soft pink shades and sweet details.</p><button class="primary-btn" onclick="selectTheme('Lovely Pink','pink')">Choose Theme</button></div>
+    <div class="card"><div class="emoji">💜</div><h3>Dreamy Purple</h3><p>A dreamy purple-inspired world.</p><button class="primary-btn" onclick="selectTheme('Dreamy Purple','purple')">Choose Theme</button></div>
+    <div class="card"><div class="emoji">🌊</div><h3>Ocean Blue</h3><p>Cool blue shades for a calm feeling.</p><button class="primary-btn" onclick="selectTheme('Ocean Blue','blue')">Choose Theme</button></div>
+    <div class="card"><div class="emoji">🌿</div><h3>Nature Green</h3><p>Fresh green shades and natural charm.</p><button class="primary-btn" onclick="selectTheme('Nature Green','green')">Choose Theme</button></div>
+    <div class="card"><div class="emoji">🍑</div><h3>Peach Glow</h3><p>Warm peach shades and gentle glow.</p><button class="primary-btn" onclick="selectTheme('Peach Glow','peach')">Choose Theme</button></div>
+    <div class="card"><div class="emoji">🌙</div><h3>Midnight</h3><p>A magical night-inspired design.</p><button class="primary-btn" onclick="selectTheme('Midnight','purple')">Choose Theme</button></div>
+    <div class="card"><div class="emoji">🧸</div><h3>Cute Pastel</h3><p>Playful pink and purple colours.</p><button class="primary-btn" onclick="selectTheme('Cute Pastel','pink')">Choose Theme</button></div>
   </div>
-  <p id="selected-theme" style="text-align:center;color:#ff91b9;margin-top:30px;">No theme selected yet.</p>
+
+  <p class="selection-status" id="selected-theme">No theme selected yet.</p>
 </section>
 
-<!-- ===== MUSIC STUDIO ===== -->
-<section id="music-studio">
+<!-- MUSIC STUDIO -->
+<section class="studio-section" id="music-studio">
   <div class="section-heading">
     <small>ADD A LITTLE SOUND</small>
     <h2>Choose Your Music 🎵</h2>
-    <p>Select a music mood for your magical gift.</p>
+    <p>Select a music mood or upload your own audio file.</p>
   </div>
 
   <div class="grid">
-    <div class="card"><div class="emoji">🎹</div><h3>Soft Piano</h3><p>A gentle piano mood for heartfelt moments.</p><button class="primary-btn" onclick="selectMusic('Soft Piano')">Choose Music</button></div>
-    <div class="card"><div class="emoji">🎻</div><h3>Romantic Instrumental</h3><p>A soft instrumental atmosphere.</p><button class="primary-btn" onclick="selectMusic('Romantic Instrumental')">Choose Music</button></div>
-    <div class="card"><div class="emoji">🎸</div><h3>Acoustic Mood</h3><p>A warm acoustic-inspired sound.</p><button class="primary-btn" onclick="selectMusic('Acoustic Mood')">Choose Music</button></div>
-    <div class="card"><div class="emoji">🌧️</div><h3>Rainy Calm</h3><p>A peaceful rainy-day atmosphere.</p><button class="primary-btn" onclick="selectMusic('Rainy Calm')">Choose Music</button></div>
-    <div class="card"><div class="emoji">🎉</div><h3>Celebration</h3><p>A cheerful mood for a happy occasion.</p><button class="primary-btn" onclick="selectMusic('Celebration')">Choose Music</button></div>
-    <div class="card"><div class="emoji">🌌</div><h3>Dreamy Ambient</h3><p>A calm dreamy background mood.</p><button class="primary-btn" onclick="selectMusic('Dreamy Ambient')">Choose Music</button></div>
+    <div class="card"><div class="emoji">🎹</div><h3>Soft Piano</h3><p>A gentle piano mood.</p><button class="primary-btn" onclick="selectMusic('Soft Piano')">Choose Mood</button></div>
+    <div class="card"><div class="emoji">🎻</div><h3>Romantic Instrumental</h3><p>A soft instrumental atmosphere.</p><button class="primary-btn" onclick="selectMusic('Romantic Instrumental')">Choose Mood</button></div>
+    <div class="card"><div class="emoji">🎸</div><h3>Acoustic Mood</h3><p>A warm acoustic-inspired sound.</p><button class="primary-btn" onclick="selectMusic('Acoustic Mood')">Choose Mood</button></div>
+    <div class="card"><div class="emoji">🌧️</div><h3>Rainy Calm</h3><p>A peaceful rainy-day atmosphere.</p><button class="primary-btn" onclick="selectMusic('Rainy Calm')">Choose Mood</button></div>
+    <div class="card"><div class="emoji">🎉</div><h3>Celebration</h3><p>A cheerful mood for a happy occasion.</p><button class="primary-btn" onclick="selectMusic('Celebration')">Choose Mood</button></div>
+    <div class="card"><div class="emoji">🌌</div><h3>Dreamy Ambient</h3><p>A calm dreamy background mood.</p><button class="primary-btn" onclick="selectMusic('Dreamy Ambient')">Choose Mood</button></div>
   </div>
-  
-<!-- CUSTOM MUSIC UPLOAD -->
-<div class="card" style="max-width:600px;margin:35px auto;text-align:center;">
-  <div class="emoji">🎧</div>
-  <h3>Upload Your Own Music</h3>
-  <p>Choose your favourite song from your device.</p>
 
-  <input
-    type="file"
-    id="custom-music"
-    accept="audio/mp3,audio/wav,audio/mpeg,audio/mp4,audio/x-m4a"
-    onchange="previewCustomMusic(event)"
-    style="margin-top:20px;max-width:100%;"
-  >
+  <div class="studio-card">
+    <div class="emoji">🎧</div>
+    <h3>Upload Your Own Music</h3>
+    <p>Choose an audio file from your device.</p>
 
-  <p id="custom-music-name" style="margin-top:18px;color:#ff91b9;">
-    No music uploaded yet.
-  </p>
+    <input class="studio-input" type="file" id="custom-music" accept="audio/*">
+    <p id="custom-music-name" class="selection-status">No music uploaded yet.</p>
 
-  <audio
-    id="custom-music-player"
-    controls
-    style="display:none;width:100%;margin-top:15px;"
-  ></audio>
-</div>
+    <audio id="custom-music-player" controls style="display:none;width:100%;margin-top:15px;"></audio>
+  </div>
 
-  <p id="selected-music" style="text-align:center;color:#ff91b9;margin-top:30px;">No music selected yet.</p>
+  <p class="selection-status" id="selected-music">No music selected yet.</p>
 </section>
-<!-- PHOTO MEMORIES STUDIO -->
-<section class="studio-section" id="photo-memories">
-  <h2>📸 Photo Memories</h2>
-  <p>Upload your favourite memories and make your gift special.</p>
 
-  <div class="card" style="max-width:600px;margin:30px auto;text-align:center;">
+<!-- PHOTO MEMORIES -->
+<section class="studio-section" id="photo-memories">
+  <div class="section-heading">
+    <small>KEEP YOUR MEMORIES CLOSE</small>
+    <h2>Photo Memories 📸</h2>
+    <p>Upload your favourite pictures and add a caption to each memory.</p>
+  </div>
+
+  <div class="studio-card">
     <div class="emoji">💖</div>
     <h3>Upload Your Photos</h3>
-
-    <input
-      type="file"
-      id="memory-photos"
-      accept="image/*"
-      multiple
-      onchange="previewMemoryPhotos(event)"
-    >
-
-    <div id="memory-photo-preview"
-      style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px;">
-    </div>
+    <input class="studio-input" type="file" id="memory-photos" accept="image/*" multiple>
+    <p class="notice">Your selected photos are previewed in this browser. They are not uploaded to online storage.</p>
+    <div id="memory-photo-preview"></div>
   </div>
 </section>
- 
-<!-- PERSONAL GIFT STUDIO -->
+
+<!-- PERSONAL GIFT -->
 <section class="studio-section" id="personal-gift">
-  <h2>💌 Personal Gift Studio</h2>
-  <p>Make your gift special with a personal name and message.</p>
+  <div class="section-heading">
+    <small>MAKE IT PERSONAL</small>
+    <h2>Personal Gift Studio 💌</h2>
+    <p>Add a name and a message to make your gift feel special.</p>
+  </div>
 
-  <div class="card" style="max-width:600px;margin:30px auto;padding:25px;text-align:center;">
-
+  <div class="studio-card">
     <h3>🎀 Who is this gift for?</h3>
-
-    <input
-      type="text"
-      id="recipient-name"
-      placeholder="Enter recipient's name..."
-      maxlength="40"
-      oninput="updateGiftPreview()"
-      style="width:100%;box-sizing:border-box;padding:13px;margin:12px 0;border:1px solid #ff91b9;border-radius:10px;"
-    >
+    <input class="studio-input" type="text" id="recipient-name" placeholder="Enter recipient's name..." maxlength="40">
 
     <h3>💖 Write Your Personal Message</h3>
+    <textarea class="studio-input" id="personal-message" placeholder="Write your beautiful message here..." maxlength="500"></textarea>
 
-    <textarea
-      id="personal-message"
-      placeholder="Write your beautiful message here..."
-      maxlength="500"
-      oninput="updateGiftPreview()"
-      style="width:100%;box-sizing:border-box;min-height:120px;padding:13px;margin:12px 0;border:1px solid #ff91b9;border-radius:10px;"
-    ></textarea>
-
-    <div id="gift-live-preview"
-      style="margin-top:20px;padding:22px;background:#fff0f6;border:2px solid #ff91b9;border-radius:15px;color:#9b174b;">
-
+    <div id="gift-live-preview">
       <h3>✨ Live Gift Preview ✨</h3>
       <h2 id="preview-recipient">Your Special Person 💗</h2>
       <p id="preview-message">Your personal message will appear here...</p>
-
     </div>
   </div>
 </section>
- 
-</main>
-  
-<footer class="site-footer">
 
-  <div class="footer-magic">
-    Made with 💗 and a little bit of magic ✨
+<!-- GIFT SUMMARY -->
+<section class="studio-section" id="gift-summary">
+  <div class="section-heading">
+    <small>YOUR CREATION SO FAR</small>
+    <h2>Your Gift Summary ✨</h2>
+    <p>Review the choices you have made in the studios.</p>
   </div>
 
+  <div class="studio-card">
+    <h3>💝 Your Magical Gift</h3>
+    <ul class="summary-list">
+      <li id="summary-recipient">Recipient: Not entered yet</li>
+      <li id="summary-cake">Cake: Not selected</li>
+      <li id="summary-wrap">Gift wrap: Not selected</li>
+      <li id="summary-theme">Theme: Not selected</li>
+      <li id="summary-music">Music: Not selected</li>
+      <li id="summary-photos">Photos: 0 uploaded</li>
+    </ul>
+
+    <button class="primary-btn" onclick="refreshSummary()">Refresh My Summary ✨</button>
+    <p class="notice">This is a local preview only. Publishing and shareable gift links are not connected yet.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- PHOTO VIEWER -->
+<div id="photo-viewer" role="dialog" aria-label="Large photo preview">
+  <button type="button" onclick="closePhotoViewer()">Close ✕</button>
+  <img id="large-photo" src="" alt="Large memory preview">
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-magic">Made with 💗 and a little bit of magic ✨</div>
+
   <div class="footer-founder">
-
     <div class="footer-ribbon">🎀</div>
-
-    <div class="footer-founder-label">
-      FOUNDER & CREATOR
-    </div>
-
-    <div class="footer-name">
-      Amit Das
-    </div>
-
-    <div class="footer-tagline">
-      Creating magical memories, one wish at a time 💖
-    </div>
-
+    <div class="footer-founder-label">FOUNDER & CREATOR</div>
+    <div class="footer-name">Amit Das</div>
+    <div class="footer-tagline">Creating magical memories, one wish at a time 💖</div>
   </div>
 
   <div class="footer-line"></div>
@@ -1242,37 +1042,74 @@ footer {
     <br>
     Crafted with love & memories ✨
   </div>
-
 </footer>
 
 <script>
+/* Selected gift details */
+const giftChoices = {
+  cake: "",
+  wrap: "",
+  theme: "",
+  music: "",
+  photos: 0
+};
+
+/* Start creating */
 function startJourney() {
-  alert("Your magical gift journey is coming soon! ✨");
-}
-  
-function selectCake(cakeName) {
-  const selectedCake = document.getElementById("selected-cake");
-
-  selectedCake.textContent = "Your selected cake: " + cakeName + " 🎂";
-
-  selectedCake.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
+  document.getElementById("cake-studio").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
   });
 }
+
+/* Cake selection */
+function selectCake(cakeName) {
+  giftChoices.cake = cakeName;
+
+  document.getElementById("selected-cake").textContent =
+    "Your selected cake: " + cakeName + " 🎂";
+
+  refreshSummary();
+}
+
+/* Gift wrap selection */
 function selectWrap(wrapName) {
+  giftChoices.wrap = wrapName;
+
   document.getElementById("selected-wrap").textContent =
     "Your selected gift wrap: " + wrapName + " 🎁";
+
+  refreshSummary();
 }
 
-function selectTheme(themeName) {
+/* Theme selection */
+function selectTheme(themeName, themeColor) {
+  giftChoices.theme = themeName;
+
+  document.body.dataset.theme = themeColor;
+
   document.getElementById("selected-theme").textContent =
     "Your selected theme: " + themeName + " 🎨";
+
+  refreshSummary();
 }
 
+/* Music mood selection */
+function selectMusic(musicName) {
+  giftChoices.music = musicName;
+
+  document.getElementById("selected-music").textContent =
+    "Your selected music mood: " + musicName + " 🎵";
+
+  refreshSummary();
+}
+
+/* Custom music upload */
 let customMusicURL = null;
 
-function previewCustomMusic(event) {
+const musicInput = document.getElementById("custom-music");
+
+musicInput.addEventListener("change", function(event) {
   const file = event.target.files[0];
 
   if (!file) return;
@@ -1290,91 +1127,154 @@ function previewCustomMusic(event) {
   customMusicURL = URL.createObjectURL(file);
 
   const player = document.getElementById("custom-music-player");
-  const name = document.getElementById("custom-music-name");
 
   player.src = customMusicURL;
   player.style.display = "block";
-  name.textContent = "Selected music: " + file.name + " 🎵";
-}
 
-function selectMusic(musicName) {
+  document.getElementById("custom-music-name").textContent =
+    "Selected music: " + file.name + " 🎵";
+
+  giftChoices.music = "Uploaded: " + file.name;
+
   document.getElementById("selected-music").textContent =
-    "Your selected music mood: " + musicName + " 🎵";
-}
- function previewMemoryPhotos(event) {
-  const files = Array.from(event.target.files);
-  const preview = document.getElementById("memory-photo-preview");
+    "Your uploaded music: " + file.name + " 🎵";
 
-  preview.innerHTML = "";
+  refreshSummary();
+});
+
+/* Photo upload and preview */
+const photoInput = document.getElementById("memory-photos");
+const photoPreview = document.getElementById("memory-photo-preview");
+
+let photoURLs = [];
+
+photoInput.addEventListener("change", function(event) {
+  photoURLs.forEach(url => URL.revokeObjectURL(url));
+  photoURLs = [];
+  photoPreview.innerHTML = "";
+
+  const files = Array.from(event.target.files);
 
   files.forEach(file => {
     if (!file.type.startsWith("image/")) return;
 
     const url = URL.createObjectURL(file);
+    photoURLs.push(url);
 
     const card = document.createElement("div");
-    card.style.cssText =
-      "width:160px;padding:10px;background:#fff0f6;border-radius:15px;text-align:center;";
+    card.className = "photo-card";
 
     const img = document.createElement("img");
     img.src = url;
     img.alt = "Memory photo";
-    img.style.cssText =
-      "width:140px;height:130px;object-fit:cover;border-radius:12px;cursor:pointer;";
 
-    // Large Photo Preview
-    img.onclick = function() {
-      const viewer = document.createElement("div");
-      viewer.style.cssText =
-        "position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:99999;padding:20px;";
+    img.addEventListener("click", function() {
+      openPhotoViewer(url);
+    });
 
-      const large = document.createElement("img");
-      large.src = url;
-      large.style.cssText =
-        "max-width:95%;max-height:85vh;object-fit:contain;border-radius:15px;";
-
-      viewer.appendChild(large);
-      viewer.onclick = () => viewer.remove();
-      document.body.appendChild(viewer);
-    };
-
-    // Photo Caption
     const caption = document.createElement("input");
     caption.type = "text";
-    caption.placeholder = "Write a memory caption...";
     caption.maxLength = 100;
-    caption.style.cssText =
-      "width:100%;box-sizing:border-box;margin-top:10px;padding:9px;border:1px solid #ff91b9;border-radius:8px;";
+    caption.placeholder = "Write a caption...";
 
-    // Remove Photo
-    const remove = document.createElement("button");
-    remove.textContent = "Remove ✖";
-    remove.type = "button";
-    remove.style.cssText =
-      "margin-top:8px;padding:7px 12px;border:0;border-radius:8px;background:#ff5b91;color:white;";
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.textContent = "Remove ✖";
 
-    remove.onclick = function() {
+    removeButton.addEventListener("click", function() {
       URL.revokeObjectURL(url);
+      photoURLs = photoURLs.filter(item => item !== url);
       card.remove();
-    };
+
+      giftChoices.photos = photoPreview.children.length;
+      refreshSummary();
+    });
 
     card.appendChild(img);
     card.appendChild(caption);
-    card.appendChild(remove);
-    preview.appendChild(card);
+    card.appendChild(removeButton);
+
+    photoPreview.appendChild(card);
   });
+
+  giftChoices.photos = photoPreview.children.length;
+  refreshSummary();
+});
+
+/* Large photo viewer */
+function openPhotoViewer(url) {
+  document.getElementById("large-photo").src = url;
+  document.getElementById("photo-viewer").style.display = "flex";
 }
-  
+
+function closePhotoViewer() {
+  document.getElementById("photo-viewer").style.display = "none";
+  document.getElementById("large-photo").src = "";
+}
+
+document.getElementById("photo-viewer").addEventListener("click", function(event) {
+  if (event.target === this) {
+    closePhotoViewer();
+  }
+});
+
+/* Live personal gift preview */
+const recipientInput = document.getElementById("recipient-name");
+const messageInput = document.getElementById("personal-message");
+
 function updateGiftPreview() {
-  const name = document.getElementById("recipient-name").value.trim();
-  const message = document.getElementById("personal-message").value.trim();
+  const name = recipientInput.value.trim();
+  const message = messageInput.value.trim();
 
   document.getElementById("preview-recipient").textContent =
     name || "Your Special Person 💗";
 
   document.getElementById("preview-message").textContent =
     message || "Your personal message will appear here...";
+
+  refreshSummary();
 }
+
+recipientInput.addEventListener("input", updateGiftPreview);
+messageInput.addEventListener("input", updateGiftPreview);
+
+/* Refresh gift summary */
+function refreshSummary() {
+  const name = recipientInput.value.trim();
+
+  document.getElementById("summary-recipient").textContent =
+    "Recipient: " + (name || "Not entered yet");
+
+  document.getElementById("summary-cake").textContent =
+    "Cake: " + (giftChoices.cake || "Not selected");
+
+  document.getElementById("summary-wrap").textContent =
+    "Gift wrap: " + (giftChoices.wrap || "Not selected");
+
+  document.getElementById("summary-theme").textContent =
+    "Theme: " + (giftChoices.theme || "Not selected");
+
+  document.getElementById("summary-music").textContent =
+    "Music: " + (giftChoices.music || "Not selected");
+
+  giftChoices.photos = photoPreview.children.length;
+
+  document.getElementById("summary-photos").textContent =
+    "Photos: " + giftChoices.photos + " uploaded";
+}
+
+/* Initial summary */
+refreshSummary();
+
+/* Release temporary audio URL when leaving page */
+window.addEventListener("beforeunload", function() {
+  if (customMusicURL) {
+    URL.revokeObjectURL(customMusicURL);
+  }
+
+  photoURLs.forEach(url => URL.revokeObjectURL(url));
+});
 </script>
+
 </body>
 </html>
