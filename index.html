@@ -747,6 +747,46 @@ footer {
     </div>
   </div>
 </section>
+ 
+<!-- PERSONAL GIFT STUDIO -->
+<section class="studio-section" id="personal-gift">
+  <h2>💌 Personal Gift Studio</h2>
+  <p>Make your gift special with a personal name and message.</p>
+
+  <div class="card" style="max-width:600px;margin:30px auto;padding:25px;text-align:center;">
+
+    <h3>🎀 Who is this gift for?</h3>
+
+    <input
+      type="text"
+      id="recipient-name"
+      placeholder="Enter recipient's name..."
+      maxlength="40"
+      oninput="updateGiftPreview()"
+      style="width:100%;box-sizing:border-box;padding:13px;margin:12px 0;border:1px solid #ff91b9;border-radius:10px;"
+    >
+
+    <h3>💖 Write Your Personal Message</h3>
+
+    <textarea
+      id="personal-message"
+      placeholder="Write your beautiful message here..."
+      maxlength="500"
+      oninput="updateGiftPreview()"
+      style="width:100%;box-sizing:border-box;min-height:120px;padding:13px;margin:12px 0;border:1px solid #ff91b9;border-radius:10px;"
+    ></textarea>
+
+    <div id="gift-live-preview"
+      style="margin-top:20px;padding:22px;background:#fff0f6;border:2px solid #ff91b9;border-radius:15px;color:#9b174b;">
+
+      <h3>✨ Live Gift Preview ✨</h3>
+      <h2 id="preview-recipient">Your Special Person 💗</h2>
+      <p id="preview-message">Your personal message will appear here...</p>
+
+    </div>
+  </div>
+</section>
+ 
 </main>
   
 <footer class="site-footer">
@@ -901,6 +941,17 @@ function selectMusic(musicName) {
     card.appendChild(remove);
     preview.appendChild(card);
   });
+}
+  
+function updateGiftPreview() {
+  const name = document.getElementById("recipient-name").value.trim();
+  const message = document.getElementById("personal-message").value.trim();
+
+  document.getElementById("preview-recipient").textContent =
+    name || "Your Special Person 💗";
+
+  document.getElementById("preview-message").textContent =
+    message || "Your personal message will appear here...";
 }
 </script>
 </body>
