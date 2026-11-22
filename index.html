@@ -645,6 +645,72 @@ footer {
   font-size: 15px;
   line-height: 1.7;
 }
+  
+/* ===== PHOTO MEMORIES ROYAL DARK THEME ===== */
+
+/* Photo Card Background */
+#memory-photo-preview > div {
+  background: linear-gradient(
+    145deg,
+    #351329,
+    #572044,
+    #3d1735
+  ) !important;
+
+  border: 1.5px solid #d9ad68 !important;
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 8px 22px #d9ad6840,
+    inset 0 1px 8px #ffffff12 !important;
+}
+
+/* Caption Input - Remove White */
+#memory-photo-preview input {
+  background: linear-gradient(
+    135deg,
+    #351329,
+    #54203f
+  ) !important;
+
+  color: #ffe6bd !important;
+  border: 1px solid #d9ad68 !important;
+  border-radius: 10px !important;
+
+  box-shadow: 0 0 12px #d9ad6833;
+}
+
+#memory-photo-preview input::placeholder {
+  color: #e5bfd0 !important;
+}
+
+/* Remove Button - Royal Rose Gold */
+#memory-photo-preview button {
+  background: linear-gradient(
+    135deg,
+    #d9ad68,
+    #a96886
+  ) !important;
+
+  color: #351329 !important;
+  border: 1px solid #ffe0a5 !important;
+  border-radius: 10px !important;
+  font-weight: 700;
+
+  box-shadow: 0 5px 15px #d9ad6855;
+  transition: 0.3s ease;
+}
+
+#memory-photo-preview button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px #e8b978aa;
+}
+
+/* Photo Border */
+#memory-photo-preview img {
+  border: 2px solid #d9ad68;
+  box-shadow: 0 5px 18px #d9ad6844;
+}
 </style>
 </head>
 
