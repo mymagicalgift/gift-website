@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#170713">
+<meta name="theme-color" content="#19060a">
 <title>My Magical Gift — Make a Moment Unforgettable</title>
 <meta name="description" content="Create a beautiful personalised digital gift with your photos, messages and surprises for birthdays, anniversaries, friendships and every special moment.">
 <meta property="og:title" content="My Magical Gift">
@@ -16,13 +16,13 @@
 
 <style>
 :root {
-    --bg: #170713;
-    --card-bg: #21091b;
-    --pink: #ff6f9f;
-    --rose: #ffb5ca;
+    --bg: #19060a;
+    --card-bg: #26070c;
+    --pink: #f0576f;
+    --rose: #da929e;
     --gold: #f4c879;
-    --white: #fff7fa;
-    --muted: #c9aeba;
+    --white: #fbf1f3;
+    --muted: #d4a9b4;
     --border: rgba(255, 255, 255, 0.11);
     --nav-h: 76px;
 }
@@ -40,8 +40,8 @@ body {
     line-height: 1.6;
     color: var(--white);
     background:
-        radial-gradient(900px 600px at 0% 0%, rgba(150, 20, 75, 0.18), transparent 60%),
-        radial-gradient(800px 600px at 100% 40%, rgba(255, 80, 130, 0.1), transparent 60%),
+        radial-gradient(900px 600px at 0% 0%, rgba(150, 20, 40, 0.18), transparent 60%),
+        radial-gradient(800px 600px at 100% 40%, rgba(235, 65, 90, 0.1), transparent 60%),
         var(--bg);
     overflow-x: hidden;
 }
@@ -77,8 +77,8 @@ input, textarea { font: inherit; }
 .eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 8px 16px; border-radius: 30px;
-    border: 1px solid rgba(255, 143, 180, 0.28);
-    background: rgba(255, 90, 140, 0.08);
+    border: 1px solid rgba(238, 128, 140, 0.28);
+    background: rgba(232, 60, 85, 0.08);
     color: var(--rose); font-size: 13px; font-weight: 600;
 }
 
@@ -86,7 +86,7 @@ input, textarea { font: inherit; }
 .section-head p { color: var(--muted); font-size: 15px; line-height: 1.8; }
 
 .gradient-text {
-    background: linear-gradient(110deg, #fff0f5, #ff7ba5 55%, #f4c879);
+    background: linear-gradient(110deg, #f7e3e7, #f2667c 55%, #f4c879);
     -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
@@ -105,20 +105,20 @@ input, textarea { font: inherit; }
 
 .btn-primary {
     color: #fff; border-color: rgba(255, 255, 255, 0.18);
-    background: linear-gradient(110deg, #a80e47, #ef4778, #ff7ca5);
+    background: linear-gradient(110deg, #a8232f, #e83751, #f2667c);
     background-size: 200% 200%;
-    box-shadow: 0 10px 26px rgba(220, 40, 100, 0.28);
+    box-shadow: 0 10px 26px rgba(220, 40, 60, 0.28);
 }
 .btn-primary:not(:disabled):hover {
     transform: translateY(-3px); background-position: 100% 0;
-    box-shadow: 0 14px 32px rgba(255, 60, 120, 0.38);
+    box-shadow: 0 14px 32px rgba(232, 55, 80, 0.38);
 }
 
 .btn-ghost {
-    color: var(--rose); border-color: rgba(255, 143, 180, 0.35);
+    color: var(--rose); border-color: rgba(238, 128, 140, 0.35);
     background: rgba(255, 255, 255, 0.03);
 }
-.btn-ghost:not(:disabled):hover { background: rgba(255, 100, 150, 0.12); transform: translateY(-3px); }
+.btn-ghost:not(:disabled):hover { background: rgba(232, 70, 95, 0.12); transform: translateY(-3px); }
 
 .btn:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
 
@@ -126,7 +126,7 @@ input, textarea { font: inherit; }
 
 .navbar {
     position: sticky; top: 0; z-index: 1000;
-    background: #1b0818;
+    background: #1f070d;
     border-bottom: 1px solid var(--border);
 }
 
@@ -137,18 +137,18 @@ input, textarea { font: inherit; }
 
 .nav-links { display: flex; align-items: center; gap: 24px; }
 
-.nav-links a:not(.nav-cta) { color: #e6cbd7; font-size: 13px; font-weight: 600; transition: color 0.3s ease; }
+.nav-links a:not(.nav-cta) { color: #e3c4cd; font-size: 13px; font-weight: 600; transition: color 0.3s ease; }
 .nav-links a:not(.nav-cta):hover { color: var(--pink); }
 
 .nav-cta {
     padding: 11px 18px; border-radius: 11px;
-    background: linear-gradient(120deg, #a80e47, #e94173);
+    background: linear-gradient(120deg, #a8232f, #e83751);
     color: #fff; font-size: 13px; font-weight: 700;
 }
 
 .menu-toggle {
     display: none; width: 46px; height: 46px; border-radius: 14px;
-    border: 1px solid rgba(255, 143, 180, 0.3); background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(238, 128, 140, 0.3); background: rgba(255, 255, 255, 0.04);
     flex-direction: column; align-items: center; justify-content: center; gap: 5px;
 }
 .menu-toggle span {
@@ -162,11 +162,11 @@ input, textarea { font: inherit; }
 .mobile-menu {
     position: absolute; left: 0; right: 0; top: 100%;
     display: grid; gap: 4px; padding: 14px 4% 22px;
-    background: #1b0818; border-bottom: 1px solid var(--border);
+    background: #1f070d; border-bottom: 1px solid var(--border);
 }
-.mobile-menu a:not(.btn) { padding: 13px 14px; border-radius: 12px; color: #ead2dc; font-weight: 600; font-size: 15px; }
+.mobile-menu a:not(.btn) { padding: 13px 14px; border-radius: 12px; color: #e8cad2; font-weight: 600; font-size: 15px; }
 .mobile-menu a:not(.btn):hover,
-.mobile-menu a:not(.btn):focus-visible { background: rgba(255, 100, 150, 0.1); color: var(--pink); }
+.mobile-menu a:not(.btn):focus-visible { background: rgba(232, 70, 95, 0.1); color: var(--pink); }
 .mobile-menu .btn { margin-top: 10px; }
 
 /* BRAND */
@@ -176,9 +176,9 @@ input, textarea { font: inherit; }
 .brand-mark {
     width: 46px; height: 46px; flex: 0 0 46px; position: relative;
     display: grid; place-items: center; border-radius: 15px;
-    background: linear-gradient(145deg, #ff9bb9 0%, #d52b68 48%, #720d3d 100%);
+    background: linear-gradient(145deg, #ffa3b1 0%, #d2283f 48%, #6e0c22 100%);
     border: 1px solid rgba(255, 226, 236, 0.55);
-    box-shadow: 0 5px 18px rgba(232, 55, 117, 0.3);
+    box-shadow: 0 5px 18px rgba(232, 55, 81, 0.3);
 }
 
 .brand-gift { font-size: 25px; line-height: 1; }
@@ -190,8 +190,8 @@ input, textarea { font: inherit; }
 
 .brand-type { display: flex; flex-direction: column; gap: 1px; line-height: 1; }
 .brand-my { color: var(--gold); font-size: 8px; font-weight: 800; letter-spacing: 3px; padding-left: 2px; }
-.brand-name { font-family: 'Playfair Display', serif; color: #fff3f7; font-size: 19px; font-weight: 800; white-space: nowrap; }
-.brand-name b { color: #ff8eaf; font-weight: 800; }
+.brand-name { font-family: 'Playfair Display', serif; color: #f7e6ea; font-size: 19px; font-weight: 800; white-space: nowrap; }
+.brand-name b { color: #f58a98; font-weight: 800; }
 
 /* HERO */
 
@@ -217,14 +217,14 @@ input, textarea { font: inherit; }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
 
-.hero-note { display: flex; align-items: center; gap: 10px; margin-top: 27px; color: #d6b9c6; font-size: 13px; }
+.hero-note { display: flex; align-items: center; gap: 10px; margin-top: 27px; color: #d3aab5; font-size: 13px; }
 .hero-note span { color: var(--gold); }
 
 .hero-visual { position: relative; min-height: 480px; display: grid; place-items: center; }
 
 .orbit {
     position: absolute; width: 390px; height: 390px; border-radius: 50%;
-    border: 1px solid rgba(255, 143, 180, 0.16);
+    border: 1px solid rgba(238, 128, 140, 0.16);
     animation: spin 30s linear infinite;
 }
 .orbit::before, .orbit::after {
@@ -238,7 +238,7 @@ input, textarea { font: inherit; }
 
 .glow {
     position: absolute; width: 360px; height: 360px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(201, 29, 97, 0.38), rgba(201, 29, 97, 0) 70%);
+    background: radial-gradient(circle, rgba(201, 29, 50, 0.38), rgba(201, 29, 50, 0) 70%);
 }
 
 .stage { position: relative; width: 260px; height: 310px; perspective: 900px; transform: scale(var(--s, 1)); }
@@ -256,7 +256,7 @@ input, textarea { font: inherit; }
 .gift-box {
     position: absolute; left: 28px; top: 128px; width: 205px; height: 160px;
     border-radius: 8px 8px 17px 17px;
-    background: linear-gradient(110deg, #9e1246, #e13d70, #a70d45);
+    background: linear-gradient(110deg, #9e1a2e, #e03a52, #a3162a);
     box-shadow: inset 10px 0 20px rgba(255, 255, 255, 0.09), inset -12px 0 20px rgba(0, 0, 0, 0.18), 0 26px 40px rgba(0, 0, 0, 0.4);
 }
 .gift-box::before {
@@ -266,7 +266,7 @@ input, textarea { font: inherit; }
 
 .gift-lid {
     position: absolute; left: 18px; top: 109px; width: 225px; height: 35px; border-radius: 7px;
-    background: linear-gradient(100deg, #b51a52, #ff6f9f, #bd174e);
+    background: linear-gradient(100deg, #b8233a, #f0576f, #c42a40);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 .gift-lid::after {
@@ -360,8 +360,8 @@ input, textarea { font: inherit; }
 .journey-icon {
     width: 56px; height: 56px; margin-bottom: 22px; display: grid; place-items: center;
     border-radius: 50%; font-size: 26px;
-    background: radial-gradient(circle, rgba(255, 111, 159, 0.22), rgba(255, 111, 159, 0.04) 70%);
-    border: 1px solid rgba(255, 143, 180, 0.3);
+    background: radial-gradient(circle, rgba(240, 87, 111, 0.22), rgba(240, 87, 111, 0.04) 70%);
+    border: 1px solid rgba(238, 128, 140, 0.3);
 }
 
 .journey-label { color: var(--gold); font-size: 13px; font-weight: 600; }
@@ -381,9 +381,9 @@ input, textarea { font: inherit; }
 .step-node {
     width: 68px; height: 68px; margin: 0 auto 22px; border-radius: 50%;
     display: grid; place-items: center;
-    background: radial-gradient(circle, #4a1131, #21091b);
-    border: 1px solid rgba(255, 143, 180, 0.45);
-    box-shadow: 0 0 0 6px rgba(255, 111, 159, 0.08);
+    background: radial-gradient(circle, #410b19, #26070c);
+    border: 1px solid rgba(238, 128, 140, 0.45);
+    box-shadow: 0 0 0 6px rgba(240, 87, 111, 0.08);
     font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold);
 }
 
@@ -400,7 +400,7 @@ input, textarea { font: inherit; }
     border: 1px solid rgba(244, 200, 121, 0.45);
     background:
         radial-gradient(circle at 85% 0%, rgba(244, 200, 121, 0.18), transparent 55%),
-        linear-gradient(160deg, #4a1030, #2a0b21);
+        linear-gradient(160deg, #410b19, #2e0810);
     box-shadow: 0 0 40px rgba(244, 200, 121, 0.1);
 }
 
@@ -409,17 +409,17 @@ input, textarea { font: inherit; }
 .price-total {
     font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 700; line-height: 1.1;
     margin: 14px 0 6px;
-    background: linear-gradient(120deg, #fff, #ff8bad, #f4c879);
+    background: linear-gradient(120deg, #fff, #f4808f, #f4c879);
     -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
 .price-card > p { color: var(--muted); font-size: 14px; }
 
-.price-breakdown { display: grid; gap: 8px; margin-top: 20px; font-size: 14px; color: #e9d0dc; }
+.price-breakdown { display: grid; gap: 8px; margin-top: 20px; font-size: 14px; color: #e3c4cd; }
 .price-breakdown div { display: flex; justify-content: space-between; padding-top: 8px; border-top: 1px dashed rgba(255, 255, 255, 0.14); }
 
 .benefits { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; max-width: 760px; margin: 0 auto; }
-.benefits li { color: #e9d0dc; font-size: 15px; }
+.benefits li { color: #e3c4cd; font-size: 15px; }
 .benefits li::before { content: '✓'; color: #72e4a9; font-weight: 800; margin-right: 12px; }
 
 .pricing-cta { text-align: center; margin-top: 38px; }
@@ -442,7 +442,7 @@ input, textarea { font: inherit; }
 .rating-form { display: grid; gap: 20px; }
 
 .rating-field { border: 0; min-width: 0; position: relative; }
-.rating-field legend { font-size: 13px; font-weight: 600; color: #ead2dc; margin-bottom: 10px; }
+.rating-field legend { font-size: 13px; font-weight: 600; color: #e8cad2; margin-bottom: 10px; }
 
 .star-input { display: flex; flex-direction: row-reverse; justify-content: flex-start; gap: 4px; width: max-content; }
 .star-input input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
@@ -457,14 +457,14 @@ input, textarea { font: inherit; }
 .star-input input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
 
 .field { display: grid; gap: 8px; }
-.field label { font-size: 13px; font-weight: 600; color: #ead2dc; }
+.field label { font-size: 13px; font-weight: 600; color: #e8cad2; }
 
 .field textarea {
     width: 100%; padding: 14px 16px; border-radius: 14px; resize: vertical; min-height: 110px;
     border: 1px solid rgba(255, 255, 255, 0.14); background: rgba(20, 6, 16, 0.6);
     color: var(--white); font-size: 15px; line-height: 1.6;
 }
-.field textarea:focus { outline: none; border-color: var(--pink); box-shadow: 0 0 0 4px rgba(255, 111, 159, 0.15); }
+.field textarea:focus { outline: none; border-color: var(--pink); box-shadow: 0 0 0 4px rgba(240, 87, 111, 0.15); }
 
 .hint { font-size: 12px; color: var(--muted); }
 
@@ -494,8 +494,8 @@ input, textarea { font: inherit; }
 .final-card {
     position: relative; overflow: hidden; text-align: center;
     padding: 75px 35px; border-radius: 30px;
-    border: 1px solid rgba(255, 130, 175, 0.2);
-    background: linear-gradient(135deg, #351025, #54112e, #260b20);
+    border: 1px solid rgba(238, 110, 130, 0.2);
+    background: linear-gradient(135deg, #3b0b16, #500e1f, #2b0810);
 }
 .final-card h2 { font-size: clamp(34px, 5vw, 52px); max-width: 750px; margin: 22px auto; }
 .final-card p { max-width: 590px; margin: 0 auto 28px; color: var(--muted); font-size: 15px; line-height: 1.9; }
@@ -503,7 +503,7 @@ input, textarea { font: inherit; }
 
 /* FOOTER */
 
-.site-footer { padding: 72px 0 28px; background: #11050f; border-top: 1px solid var(--border); }
+.site-footer { padding: 72px 0 28px; background: #110407; border-top: 1px solid var(--border); }
 
 .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr 1.1fr; gap: 36px; padding-bottom: 44px; }
 
@@ -519,7 +519,7 @@ input, textarea { font: inherit; }
 .seal {
     display: grid; place-items: center; width: 48px; height: 48px;
     color: #fff; font-size: 19px;
-    background: radial-gradient(circle at 30% 25%, #ffd3e0, #d52b68 58%, #5e0c30);
+    background: radial-gradient(circle at 30% 25%, #ffd6dc, #d2283f 58%, #5c0a1c);
     box-shadow: 0 0 0 1px rgba(255, 220, 235, 0.25) inset, 0 8px 18px rgba(213, 43, 104, 0.28);
 }
 .seal span { display: block; line-height: 1; }
@@ -535,7 +535,7 @@ input, textarea { font: inherit; }
 .founder-ribbon { font-size: 34px; display: inline-block; animation: ribbon 3.4s ease-in-out infinite; }
 .founder-name {
     font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin-top: 6px;
-    background: linear-gradient(120deg, #fff, #ff83a9, #f4c879);
+    background: linear-gradient(120deg, #fff, #f4808f, #f4c879);
     -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .founder-role { display: block; color: var(--gold); font-size: 12px; font-weight: 600; margin-top: 2px; }
@@ -556,11 +556,11 @@ input, textarea { font: inherit; }
 @media (hover: hover) {
     .occasion:hover { border-color: var(--tone); box-shadow: 0 16px 36px var(--tone-soft); }
     .journey-card { transition: transform 0.35s ease, border-color 0.35s ease; }
-    .journey-card:hover { transform: translateY(-5px); border-color: rgba(255, 120, 165, 0.45); }
+    .journey-card:hover { transform: translateY(-5px); border-color: rgba(238, 100, 125, 0.45); }
     .brand:hover .brand-mark { transform: translateY(-2px) rotate(-5deg); }
     .brand-mark { transition: transform 0.35s ease; }
     .seal { transition: box-shadow 0.4s ease; }
-    .seal:hover { box-shadow: 0 0 0 1px rgba(255, 220, 235, 0.25) inset, 0 0 22px rgba(255, 111, 159, 0.5); }
+    .seal:hover { box-shadow: 0 0 0 1px rgba(255, 220, 235, 0.25) inset, 0 0 22px rgba(240, 87, 111, 0.5); }
 }
 
 /* RESPONSIVE */
@@ -632,7 +632,7 @@ body:not([data-route="home"]) .mobile-menu { display: none !important; }
 
 .back-link {
     display: inline-flex; align-items: center; padding: 11px 18px; border-radius: 12px;
-    border: 1px solid rgba(255, 143, 180, 0.35); color: var(--rose);
+    border: 1px solid rgba(238, 128, 140, 0.35); color: var(--rose);
     font-size: 13px; font-weight: 700; white-space: nowrap;
 }
 .back-link:hover { color: var(--pink); }
@@ -640,8 +640,8 @@ body:not([data-route="home"]) .mobile-menu { display: none !important; }
 .legal { width: min(760px, 90%); margin: 64px auto 90px; }
 .legal h1 { font-size: clamp(36px, 5vw, 48px); margin-bottom: 10px; }
 .legal .updated { color: var(--muted); font-size: 14px; margin-bottom: 40px; }
-.legal h2 { font-size: 24px; margin: 40px 0 12px; color: #fff0f5; }
-.legal p, .legal li { color: #e6cfd9; font-size: 15px; line-height: 1.8; margin-bottom: 12px; }
+.legal h2 { font-size: 24px; margin: 40px 0 12px; color: #f7e3e7; }
+.legal p, .legal li { color: #e3c4cd; font-size: 15px; line-height: 1.8; margin-bottom: 12px; }
 .legal ul { padding-left: 22px; margin-bottom: 12px; }
 .legal a { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
 .legal a:hover { color: var(--pink); }
@@ -772,13 +772,13 @@ body:not([data-route="home"]) .mobile-menu { display: none !important; }
                 <p>Make their special day even more memorable.</p>
             </article>
 
-            <article class="occasion" data-tilt style="--tone:#ff5c8a;--tone-soft:rgba(255,92,138,0.22)">
+            <article class="occasion" data-tilt style="--tone:#ff5c8a;--tone-soft:rgba(232, 55, 81,0.22)">
                 <div class="occasion-icon" aria-hidden="true">💗</div>
                 <h3>Romantic</h3>
                 <p>Turn heartfelt feelings into a lovely surprise.</p>
             </article>
 
-            <article class="occasion" data-tilt style="--tone:#ffb5ca;--tone-soft:rgba(255,181,202,0.2)">
+            <article class="occasion" data-tilt style="--tone:#da929e;--tone-soft:rgba(218, 146, 158,0.2)">
                 <div class="occasion-icon" aria-hidden="true">🧸</div>
                 <h3>Cute</h3>
                 <p>Sweet, soft and a little playful, just for them.</p>
@@ -790,7 +790,7 @@ body:not([data-route="home"]) .mobile-menu { display: none !important; }
                 <p>Celebrate the people who make life brighter.</p>
             </article>
 
-            <article class="occasion" data-tilt style="--tone:#d98ac0;--tone-soft:rgba(217,138,192,0.2)">
+            <article class="occasion" data-tilt style="--tone:#d98ac0;--tone-soft:rgba(201, 112, 127,0.2)">
                 <div class="occasion-icon" aria-hidden="true">💍</div>
                 <h3>Anniversary</h3>
                 <p>Celebrate the memories and milestones you share.</p>
